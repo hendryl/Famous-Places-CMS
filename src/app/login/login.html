@@ -12,7 +12,7 @@
             <label for="input-password">Password</label>
             <input type="password" class="form-control" ng-model="user.password" name="password" id="input-password" placeholder="Password">
           </div>
-          <label class="center-block text-center warning" ng-show="authFailed">Wrong Username or Password!</label>
+          <label class="center-block text-center text-danger" ng-show="authFailed">Wrong Username or Password!</label>
           <button type="submit" class="btn btn-primary center-block" ng-click="login()">Login</button>
         </form>
       </div>
