@@ -59,6 +59,10 @@ h6 {
                               horizontally within the column  */
 }
 
+.warning {
+  color: $color-red;
+}
+
 /**
  *  Do not remove this comments bellow. It's the markers used by gulp-inject to inject
  *  all your sass files automatically
