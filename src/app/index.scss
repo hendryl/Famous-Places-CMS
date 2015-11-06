@@ -11,10 +11,19 @@ $icon-font-path: "../../bower_components/bootstrap-sass-official/assets/fonts/bo
 // bower:scss
 // endbower
 
+// * {
+//   border: solid 1px red;
+// }
 
+@import "_variables";
+
+html, body {
+  height: 100%;
+}
 
 body {
   font-family: 'Source Sans Pro', sans-serif;
+  color: $color-black;
 }
 
 h1,
@@ -24,9 +33,31 @@ h4,
 h5,
 h6 {
   font-family: 'Gentium Book Basic', serif;
+  font-weight: 700;
 }
 
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: 0 none;
+}
 
+.fill {
+  min-height: 100%;
+  height: 100%;
+  width:100%;
+}
+
+.vertical-align {
+  display: flex;
+  flex-direction: row;
+}
+
+.vertical-align > [class^="col-"],
+.vertical-align > [class*=" col-"] {
+  display: flex;
+  align-items: center;     /* Align the flex-items vertically */
+  justify-content: center; /* Optional, to align inner flex-items
+                              horizontally within the column  */
+}
 
 /**
  *  Do not remove this comments bellow. It's the markers used by gulp-inject to inject
