@@ -12,20 +12,20 @@ $icon-font-path: "../../bower_components/bootstrap-sass-official/assets/fonts/bo
 // bower:scss
 // endbower
 
-.browsehappy {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
+body {
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
-.thumbnail {
-  height: 200px;
-
-  img.pull-right {
-    width: 50px;
-  }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Gentium Book Basic', serif;
 }
+
+
 
 /**
  *  Do not remove this comments bellow. It's the markers used by gulp-inject to inject
