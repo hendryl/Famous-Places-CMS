@@ -19,4 +19,4 @@ angular.module('famousPlacesCms', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanit
   .controller('LoginController', LoginController)
   .controller('MainController', MainController)
 
-  .directive('NavbarDirective', navbar);
+  .directive('navbar', () => new NavbarDirective());
