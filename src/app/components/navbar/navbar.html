@@ -1,17 +1,16 @@
 <nav class="navbar navbar-static-top" id="nav">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-xs-12">
-        <h1 class="nav-text">Famous Places CMS</h1>
+      <div class="col-xs-8" id="title">
+        <span class="nav-text" ng-class="{h2: titleSize == 2, h3: titleSize == 3}">Famous Places CMS</span>
       </div>
+        <div class="col-xs-4" id="logout">
+          <p class="nav-text text-right">Logged in as {{user}}.<br>
+            <a href="#/login" class="nav-link">Log out.</a>
+          </p>
+        </div>
     </div>
-    <div class="row">
-      <div class="col-xs-12">
-        <p class="nav-text">You're logged in as {{user}}.
-          <a href="#/login" class="nav-link">Click here to Log out.</a>
-        </p>
-      </div>
-    </div>
+    <div class="row"
     <div class="row">
       <div class="col-xs-12">
         <ul class="nav nav-pills">

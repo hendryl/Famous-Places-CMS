@@ -14,10 +14,27 @@ class NavbarDirective {
 }
 
 class NavbarController {
-  constructor (moment, $scope) {
+  constructor (moment, $scope, $window) {
     'ngInject';
 
     $scope.user = "Admin";
+    $scope.titleSize = 2;
+
+    var calculateTitleSize = function() {
+      if($window.innerWidth < 510) {
+        $scope.titleSize = 3;
+      } else {
+        $scope.titleSize = 2;
+      }
+      console.log($window.innerWidth);
+      console.log("calculated title size " + $scope.titleSize);
+    };
+
+    calculateTitleSize();
+
+    $window.onresize = function(event) {
+      calculateTitleSize();
+    };
   }
 }
 
