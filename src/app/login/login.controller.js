@@ -12,7 +12,7 @@ class LoginController {
 
       var user = $scope.user;
 
-      if(user.name == "admin" && user.password == "monumen") {
+      if(user.name === "admin" && user.password === "monumen") {
           $location.path("/dashboard");
       } else {
         $scope.authFailed = true;
