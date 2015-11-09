@@ -6,6 +6,14 @@
   color: $color-white;
 }
 
+.nav-link {
+  color: $color-gold;
+}
+
+.nav-link:hover {
+  color: darken($color-gold, 10%);
+}
+
 .nav-pills > li {
   margin: auto 8px;
 }
