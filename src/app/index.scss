@@ -26,18 +26,14 @@ body {
   color: $color-black;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
 h6 {
   font-family: 'Gentium Book Basic', serif;
   font-weight: 700;
-}
-
-.btn:focus, .btn:active:focus, .btn.active:focus {
-    outline: 0 none;
 }
 
 .fill {
@@ -57,6 +53,27 @@ h6 {
   align-items: center;     /* Align the flex-items vertically */
   justify-content: center; /* Optional, to align inner flex-items
                               horizontally within the column  */
+}
+
+.btn {
+  border: none;
+}
+
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: 0 none;
+}
+
+.btn-primary {
+  background-color: $color-blue;
+  color:$color-white;
+}
+
+.btn-primary:hover {
+  background-color: $color-gold;
+}
+
+.text-inverted {
+  color: $color-white;
 }
 
 .text-danger {

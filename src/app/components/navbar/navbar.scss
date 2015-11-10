@@ -1,3 +1,64 @@
-.acme-navbar-text{
-  color: white;
+#nav {
+  background-color: $color-blue;
+}
+
+#title {
+  padding-right: 0px;
+}
+
+#logout {
+  padding-top: 20px;
+}
+
+.nav-link {
+  color: $color-gold;
+}
+
+.nav-link:hover {
+  color: darken($color-gold, 10%);
+}
+
+.nav-pills > li {
+  margin: auto 8px;
+}
+
+.nav-pills > li:first-child {
+  margin-left: 0;
+}
+
+.nav-pills > li > a {
+  background-color: $color-gray;
+  color: $color-black;
+  //box-shadow: inset 0 -7px 9px -7px rgba(50, 50, 50, 0.5);
+  margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 510px) {
+  .nav-pills {
+    display: table;
+    width: 100%;
+  }
+
+  .nav-pills > li {
+    margin: 0;
+    width: 100%;
+    display: table-cell;
+  }
+
+  .nav-pills > li > a {
+    border-radius: 4px;
+    box-shadow: 0;
+    width: 100%;
+  }
+}
+
+.nav-pills > li > a:hover {
+  background-color: $color-gold;
+  color: $color-white;
+}
+
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover {
+  background-color: $color-gold;
+  color: $color-white;
 }

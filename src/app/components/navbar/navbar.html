@@ -1,21 +1,38 @@
-<nav class="navbar navbar-static-top navbar-inverse">
+<nav class="navbar navbar-static-top" id="nav">
   <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="https://github.com/Swiip/generator-gulp-angular">
-        <span class="glyphicon glyphicon-home"></span> Gulp Angular
-      </a>
+    <div class="row">
+      <div class="col-xs-8" id="title">
+        <h2 class="text-inverted">
+          Famous Places CMS
+        </h2>
+      </div>
+        <div class="col-xs-4" id="logout">
+          <p class="text-inverted text-right">Logged in as {{user}}.<br>
+            <a href="#/login" class="nav-link">Log out.</a>
+          </p>
+        </div>
     </div>
-
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
-      <ul class="nav navbar-nav">
-        <li class="active"><a ng-href="#">Home</a></li>
-        <li><a ng-href="#">About</a></li>
-        <li><a ng-href="#">Contact</a></li>
-      </ul>
-
-      <ul class="nav navbar-nav navbar-right acme-navbar-text">
-        <li>Application was created {{ vm.relativeDate }}.</li>
-      </ul>
+    <div class="row"
+    <div class="row">
+      <div class="col-xs-12">
+        <ul class="nav nav-pills">
+          <li class="active" role="presentation">
+            <a href="#/dashboard">Home</a>
+          </li>
+          <li role="presentation">
+            <a href="#/places">Places</a>
+          </li>
+          <li role="presentation">
+            <a href="#/countries">Countries</a>
+          </li>
+          <li role="presentation">
+            <a href="#/continents">Continents</a>
+          </li>
+          <li role="presentation">
+            <a href="#/characteristics">Characteristics</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </nav>
