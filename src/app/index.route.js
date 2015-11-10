@@ -6,8 +6,8 @@ function routerConfig ($routeProvider) {
       templateUrl: 'app/login/login.html',
       controller: 'LoginController',
     })
-    .when('/dashboard', {
-      title: 'Dashboard',
+    .when('/home', {
+      title: 'Home',
       templateUrl: 'app/main/main.html',
       controller: 'MainController',
     })
