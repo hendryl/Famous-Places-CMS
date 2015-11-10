@@ -14,7 +14,7 @@ class NavbarDirective {
 }
 
 class NavbarController {
-  constructor (moment, $scope, $window) {
+  constructor ($scope) {
     'ngInject';
 
     $scope.user = "Admin";
