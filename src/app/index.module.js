@@ -13,6 +13,7 @@ import NavbarDirective from './components/navbar/navbar.directive';
 
 angular.module('famousPlacesCms', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngResource', 'ngRoute', 'ui.bootstrap'])
   .constant('moment', moment)
+  .constant('toastr', toastr)
   .constant('baseURLConfig', {
     'rootAPI': 'https://famous-places-api.herokuapp.com/api'
   })
