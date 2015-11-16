@@ -6,6 +6,7 @@ import routerConfig from './index.route';
 import runBlock from './index.run';
 import LoginController from './login/login.controller';
 import MainController from './main/main.controller';
+import ContinentsController from './continents/continents.controller';
 
 import NavbarDirective from './components/navbar/navbar.directive';
 
@@ -18,5 +19,6 @@ angular.module('famousPlacesCms', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanit
   .run(runBlock)
   .controller('LoginController', LoginController)
   .controller('MainController', MainController)
+  .controller('ContinentsController', ContinentsController)
 
   .directive('navbar', () => new NavbarDirective());

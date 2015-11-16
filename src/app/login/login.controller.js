@@ -9,7 +9,6 @@ class LoginController {
     };
 
     $scope.login = function() {
-
       var user = $scope.user;
 
       if(user.name === "admin" && user.password === "monumen") {
