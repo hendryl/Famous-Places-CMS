@@ -12,22 +12,22 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-12 col-md-8">
+    <div class="col-xs-12 col-md-6">
       <table class="table auto table-responsive table-striped table-bordered">
         <thead>
           <tr>
-            <th class="text-table text-center h4" ng-repeat="header in headers">{{header}}</th>
+            <th class="text-center h4" ng-repeat="header in headers">{{header}}</th>
           </tr>
         </thead>
         <tbody>
           <tr ng-repeat="continent in continents">
-            <td class="text-table">
+            <td>
               {{continent.continent_id}}
             </td>
-            <td class="text-table">
+            <td>
               {{continent.name}}
             </td>
-            <td class="text-table">
+            <td>
               <!-- TODO: Create continent actions! -->
               <button class="btn btn-info">View</button>
               <button class="btn btn-danger">Delete</button>
