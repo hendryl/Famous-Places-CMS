@@ -14,7 +14,7 @@ class NavbarDirective {
 }
 
 class NavbarController {
-  constructor ($scope) {
+  constructor ($scope, $location) {
     'ngInject';
 
     $scope.user = "Admin";
@@ -44,7 +44,7 @@ class NavbarController {
 
     $scope.isActive = function(viewLocation) {
       return viewLocation === $location.path();
-    }
+    };
   }
 }
 
