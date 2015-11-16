@@ -8,6 +8,7 @@ import ContinentFactory from './continents/continent.factory';
 import LoginController from './login/login.controller';
 import MainController from './main/main.controller';
 import ContinentsController from './continents/manage.controller';
+import ContinentDetailController from './continents/detail.controller';
 import NavbarDirective from './components/navbar/navbar.directive';
 
 var lodash = require('lodash');
@@ -29,5 +30,6 @@ angular.module('famousPlacesCms', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanit
   .controller('LoginController', LoginController)
   .controller('MainController', MainController)
   .controller('ContinentsController', ContinentsController)
+  .controller('ContinentDetailController', ContinentDetailController)
 
   .directive('navbar', () => new NavbarDirective());

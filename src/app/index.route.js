@@ -16,6 +16,11 @@ function routerConfig ($routeProvider) {
       templateUrl: 'app/continents/manage.html',
       controller: 'ContinentsController'
     })
+    .when('/continents/create', {
+      title: 'New Continent',
+      templateUrl: 'app/continents/detail.html',
+      controller: 'ContinentDetailController'
+    })
     .otherwise({
       redirectTo: '/home'
     });
