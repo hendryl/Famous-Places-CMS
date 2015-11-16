@@ -2,7 +2,38 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-
+      <h1>Continents</h1>
     </div>
   </div>
+  <div class="row buttons-padding">
+    <div class="col-xs-12">
+      <button class="btn btn-primary">Create new continent</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-3">
+      <table class="table auto table-responsive table-striped table-bordered">
+        <thead>
+          <tr>
+            <th class="text-table text-center h4" ng-repeat="header in headers">{{header}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="continent in continents">
+            <td class="text-table">
+              {{continent.continent_id}}
+            </td>
+            <td class="text-table">
+              {{continent.name}}
+            </td>
+            <td class="text-table">
+              <!-- TODO: Continent actions! -->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
 </div>

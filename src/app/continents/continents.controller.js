@@ -1,7 +1,18 @@
 class ContinentsController {
-  constructor($scope, $http) {
+  constructor($scope, ContinentFactory) {
     'ngInject';
 
+    $scope.headers = [
+      'ID',
+      'Name',
+      'Actions'
+    ];
+
+    ContinentFactory.getContinentList().success(function(data) {
+      console.log(data);
+      $scope.continents = data;
+      console.log($scope.continents);
+    });
   }
 }
 

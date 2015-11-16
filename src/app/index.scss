@@ -80,6 +80,18 @@ h6 {
   color: $color-red;
 }
 
+.buttons-padding {
+  padding: 20px 0 20px 0;
+}
+
+table.auto {
+  table-layout: auto;
+}
+
+.text-table {
+  padding: 2px 8px;
+}
+
 /**
  *  Do not remove this comments bellow. It's the markers used by gulp-inject to inject
  *  all your sass files automatically
