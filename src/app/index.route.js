@@ -16,6 +16,11 @@ function routerConfig ($routeProvider) {
       templateUrl: 'app/continents/manage.html',
       controller: 'ContinentsController'
     })
+    .when('/continents/:id', {
+      title: 'Update Continent',
+      templateUrl: 'app/continents/detail.html',
+      controller: 'ContinentDetailController'
+    })
     .when('/continents/create', {
       title: 'New Continent',
       templateUrl: 'app/continents/detail.html',
