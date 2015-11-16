@@ -18,6 +18,33 @@ class NavbarController {
     'ngInject';
 
     $scope.user = "Admin";
+
+    $scope.menus = [
+      {
+        title: "Home",
+        href: "home"
+      },
+      {
+        title: "Places",
+        href: "places"
+      },
+      {
+        title: "Countries",
+        href: "countries"
+      },
+      {
+        title: "Continents",
+        href: "continents"
+      },
+      {
+        title: "Characteristics",
+        href: "characteristics"
+      }
+    ];
+
+    $scope.isActive = function(viewLocation) {
+      return viewLocation === $location.path();
+    }
   }
 }
 

@@ -16,20 +16,10 @@
     <div class="row">
       <div class="col-xs-12">
         <ul class="nav nav-pills">
-          <li class="active" role="presentation">
-            <a href="#/dashboard">Home</a>
-          </li>
-          <li role="presentation">
-            <a href="#/places">Places</a>
-          </li>
-          <li role="presentation">
-            <a href="#/countries">Countries</a>
-          </li>
-          <li role="presentation">
-            <a href="#/continents">Continents</a>
-          </li>
-          <li role="presentation">
-            <a href="#/characteristics">Characteristics</a>
+          <li ng-repeat="menu in menus" ng-class="{active: isActive('/{{menu.href}}')}">
+            <a ng-href="#/{{menu.href}}">
+              {{menu.title}}
+            </a>
           </li>
         </ul>
       </div>
