@@ -28,10 +28,11 @@
             <td class="text-center">
               {{continent.name}}
             </td>
-            <td>
-              <!-- TODO: Create continent actions! -->
-              <button class="btn btn-info">View</button>
-              <button class="btn btn-danger">Delete</button>
+            <td class="text-center">
+              <a ng-href="/#/continents/{{continent.continent_id}}">
+                <button class="btn btn-info">View</button>
+              </a>
+              <button class="btn btn-danger" ng-click="delete(continent.continent_id, continent.name)">Delete</button>
             </td>
           </tr>
         </tbody>

@@ -1,4 +1,4 @@
-/* global moment:false */
+/* global moment:false, toastr:false*/
 import config from './index.config';
 import routerConfig from './index.route';
 import runBlock from './index.run';
@@ -11,9 +11,12 @@ import ContinentsController from './continents/continents.controller';
 
 import NavbarDirective from './components/navbar/navbar.directive';
 
+var lodash = require('lodash');
+
 angular.module('famousPlacesCms', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngResource', 'ngRoute', 'ui.bootstrap'])
   .constant('moment', moment)
   .constant('toastr', toastr)
+  .constant('_', lodash)
   .constant('baseURLConfig', {
     'rootAPI': 'https://famous-places-api.herokuapp.com/api'
   })
