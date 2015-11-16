@@ -7,8 +7,7 @@ import ContinentFactory from './continents/continent.factory';
 
 import LoginController from './login/login.controller';
 import MainController from './main/main.controller';
-import ContinentsController from './continents/continents.controller';
-
+import ContinentsController from './continents/manage.controller';
 import NavbarDirective from './components/navbar/navbar.directive';
 
 var lodash = require('lodash');

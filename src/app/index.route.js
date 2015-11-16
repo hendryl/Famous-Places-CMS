@@ -13,11 +13,11 @@ function routerConfig ($routeProvider) {
     })
     .when('/continents', {
       title: 'Continents',
-      templateUrl: 'app/continents/continents.html',
+      templateUrl: 'app/continents/manage.html',
       controller: 'ContinentsController'
     })
     .otherwise({
-      redirectTo: '/'
+      redirectTo: '/home'
     });
 }
 

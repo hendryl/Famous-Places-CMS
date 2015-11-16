@@ -1,4 +1,4 @@
-class ContinentsController {
+class ManageController {
   constructor($scope, ContinentFactory, toastr, _) {
     'ngInject';
 
@@ -7,7 +7,6 @@ class ContinentsController {
       'Name',
       'Actions'
     ];
-
     $scope.continents = [];
 
     $scope.delete = function(id, name) {
@@ -18,7 +17,7 @@ class ContinentsController {
           $scope.continents = _.remove($scope.continents, function(continent) {
             return continent.continent_id !== id;
           });
-          
+
           toastr.success('File deleted');
         }, function(error) {
           toastr.error('Failed to delete file: ' + error);
@@ -32,4 +31,4 @@ class ContinentsController {
   }
 }
 
-export default ContinentsController;
+export default ManageController;
