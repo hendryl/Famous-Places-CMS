@@ -63,13 +63,36 @@ h6 {
     outline: 0 none;
 }
 
-.btn-primary {
-  background-color: $color-blue;
+.btn-primary, .btn-primary:focus {
+  background-color: $color-green;
   color:$color-white;
 }
-
 .btn-primary:hover {
-  background-color: $color-gold;
+  background-color: darken($color-green, 10%);
+}
+.btn-primary:active:focus {
+  background-color: darken($color-green, 20%);
+}
+
+.btn-info, .btn-info:focus {
+  background-color: $color-lightblue;
+  color:$color-white;
+}
+.btn-info:hover {
+  background-color: darken($color-lightblue, 10%);
+}
+.btn-info:active:focus {
+  background-color: darken($color-lightblue, 20%);
+}
+
+.btn-danger, .btn-danger:focus {
+  background-color: $color-red;
+}
+.btn-danger:hover {
+  background-color: darken($color-red, 10%);
+}
+.btn-danger:active:focus {
+  background-color: darken($color-red, 20%);
 }
 
 .text-inverted {
@@ -86,10 +109,6 @@ h6 {
 
 table.auto {
   table-layout: auto;
-}
-
-.text-table {
-  padding: 2px 8px;
 }
 
 /**
