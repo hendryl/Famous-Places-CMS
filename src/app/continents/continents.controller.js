@@ -9,9 +9,7 @@ class ContinentsController {
     ];
 
     ContinentFactory.getContinentList().success(function(data) {
-      console.log(data);
       $scope.continents = data;
-      console.log($scope.continents);
     });
   }
 }
