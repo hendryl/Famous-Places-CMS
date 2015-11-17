@@ -4,15 +4,30 @@ function routerConfig ($routeProvider) {
     .when('/', {
       title: 'Login',
       templateUrl: 'app/login/login.html',
-      controller: 'LoginController',
+      controller: 'LoginController'
     })
     .when('/home', {
       title: 'Home',
       templateUrl: 'app/main/main.html',
-      controller: 'MainController',
+      controller: 'MainController'
+    })
+    .when('/continents', {
+      title: 'Continents',
+      templateUrl: 'app/continents/manage.html',
+      controller: 'ContinentsController'
+    })
+    .when('/continents/:id', {
+      title: 'Update Continent',
+      templateUrl: 'app/continents/detail.html',
+      controller: 'ContinentDetailController'
+    })
+    .when('/continents/create', {
+      title: 'New Continent',
+      templateUrl: 'app/continents/detail.html',
+      controller: 'ContinentDetailController'
     })
     .otherwise({
-      redirectTo: '/'
+      redirectTo: '/home'
     });
 }
 
