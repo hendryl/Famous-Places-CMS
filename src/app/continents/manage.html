@@ -12,25 +12,25 @@
   </div>
   <div class="row">
     <div class="col-xs-12">
-      <table class="table auto table-responsive table-striped table-bordered">
+      <table align="center" class="table auto table-responsive table-striped table-bordered">
         <thead>
           <tr>
-            <th class="text-center" ng-repeat="header in headers">
+            <th ng-repeat="header in headers">
               <strong>{{header}}</strong>
             </th>
           </tr>
         </thead>
         <tbody>
           <tr ng-repeat="continent in continents">
-            <td class="text-center">
+            <td>
               {{continent.continent_id}}
             </td>
-            <td class="text-center">
+            <td>
               {{continent.name}}
             </td>
-            <td class="text-center">
+            <td>
               <a ng-href="/#/continents/{{continent.continent_id}}">
-                <button class="btn btn-info">View</button>
+                <button class="btn btn-info">Modify</button>
               </a>
               <button class="btn btn-danger" ng-click="delete(continent.continent_id, continent.name)">Delete</button>
             </td>
