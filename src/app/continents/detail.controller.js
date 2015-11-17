@@ -1,18 +1,17 @@
 class ContinentDetailController {
-  constructor($scope, ContinentFactory, $location, $routeParams, _) {
+  constructor($scope, ContinentFactory, $location, $routeParams, toastr, _) {
     'ngInject';
 
     $scope.id = 0;
     $scope.name = "";
     $scope.isPreparing = true;
+    $scope.isNewContinent = _.endsWith($location.path(), 'create');
 
-    var isNewContinent = _.endsWith($location.path(), 'create');
-
-    if (!isNewContinent) {
+    if (!$scope.isNewContinent) {
       $scope.id = Number($routeParams.id);
       $scope.header = "Update Continent";
 
-      ContinentFactory.getContinentDetail($scope.id)
+      ContinentFactory.getDetail($scope.id)
         .then(function(result) {
           $scope.name = result.data.name;
           $scope.isPreparing = false;
@@ -22,16 +21,39 @@ class ContinentDetailController {
       $scope.isPreparing = false;
     }
 
+    var getPayload = function() {
+      return {
+        "name":$scope.name
+      }
+    }
+
     $scope.canSave = function() {
       return $scope.form.$dirty;
     }
 
     $scope.cancel = function() {
+      var result = true;
 
+      if($scope.canSave()) {
+        result = confirm('Are you sure? Your changes will be discarded!');
+      }
+
+      if(result) {
+        $location.path('/continents');
+      }
     };
 
     $scope.save = function() {
+      var payload = getPayload();
+      ContinentFactory.update($scope.id, payload).then(function(result) {
+        toastr.success('Continent updated.');
+        $location.path('/continents');
+      }, function(error) {
+        toastr.success('Failed to update continent: ' + error);
+      })
+    };
 
+    $scope.create = function() {
     };
   }
 }

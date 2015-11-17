@@ -17,7 +17,8 @@
           <input class="form-control narrow-input" id="input-name" name="name" ng-disabled="isPreparing" ng-model="name" placeholder="Continent name" type="text">
         </div>
           <button class="btn btn-info btn-spacing" ng-click="cancel()">Cancel</button>
-          <button class="btn btn-primary" ng-click="save()" type="submit" ng-disabled="!canSave()">Save changes</button>
+          <button class="btn btn-primary" ng-click="save()" type="submit" ng-disabled="!canSave()" ng-hide="isNewContinent">Save changes</button>
+          <button class="btn btn-primary" ng-click="create()" type="submit" ng-disabled="!canSave()" ng-show="isNewContinent">Create</button>
       </form>
     </div>
   </div>

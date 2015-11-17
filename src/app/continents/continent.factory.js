@@ -2,23 +2,23 @@ class ContinentFactory {
   constructor($http, baseURLConfig) {
     'ngInject';
 
-    this.getContinentList = function() {
+    this.getList = function() {
       return $http.get(baseURLConfig.rootAPI + '/continents/');
     };
 
-    this.getContinentDetail = function(id) {
+    this.getDetail = function(id) {
       return $http.get(baseURLConfig.rootAPI +'/continents/' + id);
     };
 
-    this.createContinent = function(continent) {
+    this.create = function(continent) {
       return $http.post(baseURLConfig.rootAPI + '/continents/', continent);
     };
 
-    this.updateContinent = function(id, continent) {
+    this.update = function(id, continent) {
       return $http.put(baseURLConfig.rootAPI + '/continents/' + id, continent);
     };
 
-    this.deleteContinent = function(id) {
+    this.delete = function(id) {
       return $http.delete(baseURLConfig.rootAPI + '/continents/' + id);
     };
   }

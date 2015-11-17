@@ -13,20 +13,20 @@ class ManageController {
       var result = confirm("Are you sure you want to delete continent " + name + "?");
 
       if(result) {
-        ContinentFactory.deleteContinent(id).then(function(data) {
+        ContinentFactory.delete(id).then(function(data) {
           $scope.continents = _.remove($scope.continents, function(continent) {
             return continent.continent_id !== id;
           });
 
-          toastr.success('File deleted');
+          toastr.success('Continent deleted.');
         }, function(error) {
-          toastr.error('Failed to delete file: ' + error);
+          toastr.error('Failed to delete continent: ' + error);
         });
       }
     };
 
-    ContinentFactory.getContinentList().success(function(data) {
-      $scope.continents = data;
+    ContinentFactory.getList().success(function(data) {
+      $scope.continents = _.sortBy(data, "continent_id");
     });
   }
 }
