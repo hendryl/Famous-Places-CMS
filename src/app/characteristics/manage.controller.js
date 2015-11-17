@@ -20,7 +20,7 @@ class ManageController {
 
           toastr.success('Characteristic deleted.');
         }, function(error) {
-          toastr.error('Failed to delete characteristic: ' + error);
+          toastr.error('Failed to delete characteristic: ' + error.data.detail);
         });
       }
     };

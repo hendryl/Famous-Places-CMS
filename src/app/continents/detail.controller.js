@@ -49,7 +49,7 @@ class DetailController {
         toastr.success('Continent updated.');
         $location.path('/continents');
       }, function(error) {
-        toastr.error('Failed to update continent: ' + error);
+        toastr.error('Failed to update continent: ' + error.data.detail);
       });
     };
 
@@ -59,7 +59,7 @@ class DetailController {
         toastr.success('Continent created.');
         $location.path('/continents');
       }, function(error) {
-        toastr.error('Failed to create continent: ' + error);
+        toastr.error('Failed to create continent: ' + error.data.detail);
       });
     };
   }

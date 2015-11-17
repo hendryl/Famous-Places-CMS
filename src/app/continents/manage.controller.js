@@ -20,7 +20,7 @@ class ManageController {
 
           toastr.success('Continent deleted.');
         }, function(error) {
-          toastr.error('Failed to delete continent: ' + error);
+          toastr.error('Failed to delete continent: ' + error.data.detail);
         });
       }
     };
