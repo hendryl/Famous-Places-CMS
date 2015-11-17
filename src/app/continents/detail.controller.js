@@ -24,12 +24,12 @@ class ContinentDetailController {
     var getPayload = function() {
       return {
         "name":$scope.name
-      }
-    }
+      };
+    };
 
     $scope.canSave = function() {
       return $scope.form.$dirty;
-    }
+    };
 
     $scope.cancel = function() {
       var result = true;
@@ -50,7 +50,7 @@ class ContinentDetailController {
         $location.path('/continents');
       }, function(error) {
         toastr.error('Failed to update continent: ' + error);
-      })
+      });
     };
 
     $scope.create = function() {
@@ -60,7 +60,7 @@ class ContinentDetailController {
         $location.path('/continents');
       }, function(error) {
         toastr.error('Failed to create continent: ' + error);
-      })
+      });
     };
   }
 }

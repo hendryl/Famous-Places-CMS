@@ -26,6 +26,11 @@ function routerConfig ($routeProvider) {
       templateUrl: 'app/continents/detail.html',
       controller: 'ContinentDetailController'
     })
+    .when('/characteristics', {
+      title: 'Characteristics',
+      templateUrl: 'app/characteristics/manage.html',
+      controller: 'CharacteristicsController'
+    })
     .otherwise({
       redirectTo: '/home'
     });
