@@ -11,6 +11,7 @@ import MainController from './main/main.controller';
 import ContinentsController from './continents/manage.controller';
 import ContinentDetailController from './continents/detail.controller';
 import CharacteristicsController from './characteristics/manage.controller';
+import CharacteristicDetailController from './characteristics/detail.controller';
 
 import NavbarDirective from './components/navbar/navbar.directive';
 
@@ -36,5 +37,6 @@ angular.module('famousPlacesCms', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanit
   .controller('ContinentsController', ContinentsController)
   .controller('ContinentDetailController', ContinentDetailController)
   .controller('CharacteristicsController', CharacteristicsController)
+  .controller('CharacteristicDetailController', CharacteristicDetailController)
 
   .directive('navbar', () => new NavbarDirective());

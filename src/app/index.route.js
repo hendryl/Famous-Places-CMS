@@ -31,6 +31,16 @@ function routerConfig ($routeProvider) {
       templateUrl: 'app/characteristics/manage.html',
       controller: 'CharacteristicsController'
     })
+    .when('/characteristics/:id', {
+      title: 'Update Characteristic',
+      templateUrl: 'app/characteristics/detail.html',
+      controller: 'CharacteristicDetailController'
+    })
+    .when('/characteristics/create', {
+      title: 'New Characteristic',
+      templateUrl: 'app/characteristics/detail.html',
+      controller: 'CharacteristicDetailController'
+    })
     .otherwise({
       redirectTo: '/home'
     });
