@@ -49,11 +49,18 @@ class ContinentDetailController {
         toastr.success('Continent updated.');
         $location.path('/continents');
       }, function(error) {
-        toastr.success('Failed to update continent: ' + error);
+        toastr.error('Failed to update continent: ' + error);
       })
     };
 
     $scope.create = function() {
+      var payload = getPayload();
+      ContinentFactory.create(payload).then(function(result) {
+        toastr.success('Continent created.');
+        $location.path('/continents');
+      }, function(error) {
+        toastr.error('Failed to create continent: ' + error);
+      })
     };
   }
 }
