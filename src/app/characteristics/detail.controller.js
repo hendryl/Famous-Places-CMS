@@ -1,23 +1,23 @@
 class DetailController {
-  constructor($scope, ContinentFactory, $location, $routeParams, toastr, _) {
+  constructor($scope, CharacteristicFactory, $location, $routeParams, toastr, _) {
     'ngInject';
 
     $scope.id = 0;
     $scope.name = "";
     $scope.isPreparing = true;
-    $scope.isNewContinent = _.endsWith($location.path(), 'create');
+    $scope.isNewCharacteristic = _.endsWith($location.path(), 'create');
 
-    if (!$scope.isNewContinent) {
+    if (!$scope.isNewCharacteristic) {
       $scope.id = Number($routeParams.id);
-      $scope.header = "Update Continent";
+      $scope.header = "Update Characteristic";
 
-      ContinentFactory.getDetail($scope.id)
+      CharacteristicFactory.getDetail($scope.id)
         .then(function(result) {
           $scope.name = result.data.name;
           $scope.isPreparing = false;
         });
     } else {
-      $scope.header = "New Continent";
+      $scope.header = "New Characteristic";
       $scope.isPreparing = false;
     }
 
@@ -39,27 +39,27 @@ class DetailController {
       }
 
       if(result) {
-        $location.path('/continents');
+        $location.path('/characteristics');
       }
     };
 
     $scope.save = function() {
       var payload = getPayload();
-      ContinentFactory.update($scope.id, payload).then(function(result) {
-        toastr.success('Continent updated.');
-        $location.path('/continents');
+      CharacteristicFactory.update($scope.id, payload).then(function(result) {
+        toastr.success('Characteristic updated.');
+        $location.path('/characteristics');
       }, function(error) {
-        toastr.error('Failed to update continent: ' + error.data.detail);
+        toastr.error('Failed to update characteristic: ' + error.data.detail);
       });
     };
 
     $scope.create = function() {
       var payload = getPayload();
-      ContinentFactory.create(payload).then(function(result) {
-        toastr.success('Continent created.');
-        $location.path('/continents');
+      CharacteristicFactory.create(payload).then(function(result) {
+        toastr.success('Characteristic created.');
+        $location.path('/characteristics');
       }, function(error) {
-        toastr.error('Failed to create continent: ' + error.data.detail);
+        toastr.error('Failed to create characteristic: ' + error.data.detail);
       });
     };
   }
