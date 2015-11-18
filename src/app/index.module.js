@@ -5,6 +5,7 @@ import runBlock from './index.run';
 
 import ContinentFactory from './continents/continent.factory';
 import CharacteristicFactory from './characteristics/characteristic.factory';
+import CountryFactory from './countries/country.factory';
 
 import LoginController from './login/login.controller';
 import MainController from './main/main.controller';
@@ -12,6 +13,7 @@ import ContinentsController from './continents/manage.controller';
 import ContinentDetailController from './continents/detail.controller';
 import CharacteristicsController from './characteristics/manage.controller';
 import CharacteristicDetailController from './characteristics/detail.controller';
+import CountriesController from './countries/manage.controller';
 
 import NavbarDirective from './components/navbar/navbar.directive';
 
@@ -31,6 +33,7 @@ angular.module('famousPlacesCms', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanit
 
   .factory('ContinentFactory', ['$http', 'baseURLConfig', ($http, baseURLConfig) => new ContinentFactory($http, baseURLConfig)])
   .factory('CharacteristicFactory', ['$http', 'baseURLConfig', ($http, baseURLConfig) => new CharacteristicFactory($http, baseURLConfig)])
+  .factory('CountryFactory', ['$http', 'baseURLConfig', ($http, baseURLConfig) => new CountryFactory($http, baseURLConfig)])
 
   .controller('LoginController', LoginController)
   .controller('MainController', MainController)
@@ -38,5 +41,6 @@ angular.module('famousPlacesCms', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanit
   .controller('ContinentDetailController', ContinentDetailController)
   .controller('CharacteristicsController', CharacteristicsController)
   .controller('CharacteristicDetailController', CharacteristicDetailController)
+  .controller('CountriesController', CountriesController)
 
   .directive('navbar', () => new NavbarDirective());
