@@ -5,6 +5,8 @@ class ManageController {
     $scope.headers = [
       'ID',
       'Name',
+      'Continent',
+      'Image',
       'Actions'
     ];
     $scope.countries = [];
@@ -26,7 +28,12 @@ class ManageController {
     };
 
     CountryFactory.getList().success(function(data) {
-      $scope.countries = _.sortBy(data, "country_id");
+      data = _.sortBy(data, "country_id");
+      data = _.each(data, function(country) {
+        country.continent = country.continent === null ? "-" : country.continent;
+        country.image = country.image === null ? "" : country.image;
+      });
+      $scope.countries = data;
     });
   }
 }
