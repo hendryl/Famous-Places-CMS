@@ -1,5 +1,5 @@
 class ManageController {
-  constructor($scope, CharacteristicFactory, toastr, _) {
+  constructor($scope, toastr, _, CharacteristicFactory) {
     'ngInject';
 
     $scope.headers = [

@@ -14,12 +14,13 @@ import ContinentDetailController from './continents/detail.controller';
 import CharacteristicsController from './characteristics/manage.controller';
 import CharacteristicDetailController from './characteristics/detail.controller';
 import CountriesController from './countries/manage.controller';
+import CountryDetailController from './countries/detail.controller';
 
 import NavbarDirective from './components/navbar/navbar.directive';
 
 var lodash = require('lodash');
 
-angular.module('famousPlacesCms', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngResource', 'ngRoute', 'ui.bootstrap'])
+angular.module('famousPlacesCms', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngResource', 'ngRoute', 'ui.bootstrap', 'nya.bootstrap.select'])
   .constant('moment', moment)
   .constant('toastr', toastr)
   .constant('_', lodash)
@@ -42,5 +43,6 @@ angular.module('famousPlacesCms', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanit
   .controller('CharacteristicsController', CharacteristicsController)
   .controller('CharacteristicDetailController', CharacteristicDetailController)
   .controller('CountriesController', CountriesController)
+  .controller('CountryDetailController', CountryDetailController)
 
   .directive('navbar', () => new NavbarDirective());
