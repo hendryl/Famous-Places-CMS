@@ -10,11 +10,11 @@
       <form name="form">
         <div class="form-group">
           <label for="input-id">Characteristic Id</label>
-          <input class="form-control narrow-input" id="input-id" name="id" ng-model="id" placeholder="Id" type="number" readonly>
+          <input class="form-control input-narrow" id="input-id" name="id" ng-model="id" placeholder="Id" type="number" readonly>
         </div>
         <div class="form-group">
           <label for="input-name">Characteristic name</label>
-          <input class="form-control narrow-input" id="input-name" name="name" ng-disabled="isPreparing" ng-model="name" placeholder="Characteristic name" type="text">
+          <input class="form-control input-narrow" id="input-name" name="name" ng-disabled="isPreparing" ng-model="name" placeholder="Characteristic name" type="text">
         </div>
           <button class="btn btn-info btn-spacing" ng-click="cancel()">Cancel</button>
           <button class="btn btn-primary" ng-click="save()" type="submit" ng-disabled="!canSave()" ng-hide="isNewCharacteristic">Save changes</button>

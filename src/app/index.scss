@@ -59,7 +59,9 @@ h6 {
   border: none;
 }
 
-.btn:focus, .btn:active:focus, .btn.active:focus {
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus {
     outline: 0 none;
 }
 
@@ -79,7 +81,8 @@ h6 {
   background-color: DimGray;
 }
 
-.btn-info, .btn-info:focus {
+.btn-info,
+.btn-info:focus {
   background-color: $color-lightblue;
   color:$color-white;
 }
@@ -90,7 +93,8 @@ h6 {
   background-color: darken($color-lightblue, 20%);
 }
 
-.btn-danger, .btn-danger:focus {
+.btn-danger,
+.btn-danger:focus {
   background-color: $color-red;
 }
 .btn-danger:hover {
@@ -100,7 +104,8 @@ h6 {
   background-color: darken($color-red, 20%);
 }
 
-.btn-default, .btn-default:focus {
+.btn-default,
+.btn-default:focus {
   background-color: $color-gray;
 }
 .btn-default:hover {
@@ -130,11 +135,11 @@ table.auto {
   table-layout: auto;
 }
 
-.narrow-input {
+.input-narrow {
   max-width: 200px;
 }
 
-.medium-input {
+.input-medium {
   max-width: 400px;
 }
 
