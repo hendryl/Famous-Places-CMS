@@ -1,5 +1,5 @@
 class DetailController {
-  constructor($scope, ContinentFactory, $location, $routeParams, toastr, _) {
+  constructor($scope, $location, $routeParams, toastr, _, ContinentFactory) {
     'ngInject';
 
     $scope.id = 0;

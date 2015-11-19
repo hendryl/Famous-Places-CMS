@@ -135,12 +135,44 @@ table.auto {
   table-layout: auto;
 }
 
+.table-image {
+  max-width: 60px;
+}
+
 .input-narrow {
   max-width: 200px;
 }
 
 .input-medium {
   max-width: 400px;
+}
+
+.no-border {
+  border: none;
+}
+.no-border:focus,
+.no-border:active:focus,
+.no-border.active:focus {
+    outline: 0 none;
+}
+
+.nya-bs-select > {
+  .btn {
+    background-color: $color-white;
+    border: 1px solid #ccc;
+  }
+
+  .btn:focus,
+  .btn:active:focus,
+  .btn.active:focus {
+    background-color: $color-white;
+    border: 1px solid #ccc;
+  }
+}
+
+.input-image {
+  max-width: 300px;
+  padding: 8px 0;
 }
 
 /**

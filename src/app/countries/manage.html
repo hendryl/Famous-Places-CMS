@@ -2,11 +2,11 @@
 <div class="container">
   <div class="row header-padding">
     <div class="col-xs-8 col-md-8">
-      <span class="h2">Continents</span>
+      <span class="h2">Countries</span>
     </div>
     <div class="col-xs-4 col-md-4 text-right">
-      <a href="/#/continents/create">
-        <button class="btn btn-primary">Create new continent</button>
+      <a href="/#/countries/create">
+        <button class="btn btn-primary">Create new country</button>
       </a>
     </div>
   </div>
@@ -21,26 +21,33 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="continent in continents">
+          <tr ng-repeat="country in countries">
             <td class="text-center">
-              {{continent.continent_id}}
+              {{country.country_id}}
             </td>
             <td class="text-center">
-              {{continent.name}}
+              {{country.name}}
             </td>
             <td class="text-center">
-              <a ng-href="/#/continents/{{continent.continent_id}}">
+              {{country.continent}}
+            </td>
+            <td class="text-center">
+              <img class="table-image" ng-src="{{country.image}}" alt="">
+              <span ng-hide="country.image != ''">No Image</span>
+            </td>
+            <td class="text-center">
+              <a ng-href="/#/countries/{{country.country_id}}">
                 <button class="btn btn-info btn-spacing">Modify</button>
               </a>
-              <button class="btn btn-danger" ng-click="delete(continent.continent_id, continent.name)">Delete</button>
+              <button class="btn btn-danger" ng-click="delete(country.country_id, country.name)">Delete</button>
             </td>
           </tr>
         </tbody>
         <tfoot>
           <tr>
             <td class="text-right" colspan="{{headers.length}}">
-              <strong>{{continents.length}}
-                continents</strong>
+              <strong>{{countries.length}}
+                countries</strong>
             </td>
           </tr>
         </tfoot>
