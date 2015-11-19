@@ -6,7 +6,7 @@ class ManageController {
       'ID',
       'Name',
       'Continent',
-      'Image',
+      'Flag',
       'Actions'
     ];
     $scope.countries = [];

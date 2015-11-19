@@ -17,7 +17,7 @@
           <input class="form-control input-narrow" id="input-name" name="name" ng-disabled="isPreparing" ng-model="name" placeholder="Country name" type="text">
         </div>
         <div class="form-group">
-          <label for="input-continent input-narrow">Continent</label>
+          <label for="input-continent">Continent</label>
           <div>
             <ol class="nya-bs-select form-control input-narrow" live-search="true" disabled="isPreparing" ng-model="continent" size="5" title="No continent selected">
               <li nya-bs-option="option in continents track by option.name">
@@ -27,6 +27,11 @@
               </li>
             </ol>
           </div>
+        </div>
+        <div class="form-group">
+          <label for="input-image">Flag</label>
+          <input class="form-control input-medium" id="input-image" name="name" ng-disabled="isPreparing" ng-model="image" placeholder="Country flag URL" type="text">
+          <img class="input-image" ng-src="{{image}}" alt="No image" />
         </div>
         <button class="btn btn-info btn-spacing" ng-click="cancel()">Cancel</button>
         <button class="btn btn-primary" ng-click="save()" ng-disabled="!canSave()" ng-hide="isNewCountry" type="submit">Save changes</button>
