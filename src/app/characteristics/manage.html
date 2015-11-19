@@ -15,20 +15,20 @@
       <table align="center" class="table auto table-responsive table-striped table-bordered">
         <thead>
           <tr>
-            <th ng-repeat="header in headers">
+            <th ng-repeat="header in headers" class="text-center">
               <strong>{{header}}</strong>
             </th>
           </tr>
         </thead>
         <tbody>
           <tr ng-repeat="row in characteristics">
-            <td>
+            <td class="text-center">
               {{row.characteristic_id}}
             </td>
-            <td>
+            <td class="text-center">
               {{row.name}}
             </td>
-            <td>
+            <td class="text-center">
               <a ng-href="/#/characteristics/{{row.characteristic_id}}">
                 <button class="btn btn-info btn-spacing">Modify</button>
               </a>

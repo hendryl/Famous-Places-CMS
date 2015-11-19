@@ -15,20 +15,20 @@
       <table align="center" class="table auto table-responsive table-striped table-bordered">
         <thead>
           <tr>
-            <th ng-repeat="header in headers">
+            <th ng-repeat="header in headers" class="text-center">
               <strong>{{header}}</strong>
             </th>
           </tr>
         </thead>
         <tbody>
           <tr ng-repeat="continent in continents">
-            <td>
+            <td class="text-center">
               {{continent.continent_id}}
             </td>
-            <td>
+            <td class="text-center">
               {{continent.name}}
             </td>
-            <td>
+            <td class="text-center">
               <a ng-href="/#/continents/{{continent.continent_id}}">
                 <button class="btn btn-info btn-spacing">Modify</button>
               </a>
