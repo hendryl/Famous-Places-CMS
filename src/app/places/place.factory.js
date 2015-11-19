@@ -1,4 +1,4 @@
-class CharacteristicFactory {
+class PlaceFactory {
   constructor($http, baseURLConfig) {
     'ngInject';
 
