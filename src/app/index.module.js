@@ -14,6 +14,7 @@ import PlacesController from './places/manage.controller';
 import CountriesController from './countries/manage.controller';
 import ContinentsController from './continents/manage.controller';
 import CharacteristicsController from './characteristics/manage.controller';
+import PlaceDetailController from './places/detail.controller';
 import CountryDetailController from './countries/detail.controller';
 import ContinentDetailController from './continents/detail.controller';
 import CharacteristicDetailController from './characteristics/detail.controller';
@@ -45,6 +46,7 @@ angular.module('famousPlacesCms', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanit
   .controller('CountriesController', CountriesController)
   .controller('ContinentsController', ContinentsController)
   .controller('CharacteristicsController', CharacteristicsController)
+  .controller('PlaceDetailController', PlaceDetailController)
   .controller('CountryDetailController', CountryDetailController)
   .controller('ContinentDetailController', ContinentDetailController)
   .controller('CharacteristicDetailController', CharacteristicDetailController)
