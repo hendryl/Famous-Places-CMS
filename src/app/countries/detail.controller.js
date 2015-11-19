@@ -11,6 +11,11 @@ class DetailController {
     $scope.isPreparing = true;
     $scope.isNewCountry = _.endsWith($location.path(), 'create');
 
+    var nullContinent = {
+        "name": "No continent",
+        "continent_id": null
+    };
+
     var continentListPromise = ContinentFactory.getList();
     var countryPromise = null;
 
@@ -26,23 +31,32 @@ class DetailController {
       continentListPromise
         .then(function(result) {
           $scope.continents = _.sortBy(result.data, "continent_id");
+          $scope.continents.unshift(nullContinent);
           $scope.isPreparing = false;
         });
     } else {
       $q.all([continentListPromise, countryPromise]).then(function(result) {
         $scope.continents = _.sortBy(result[0].data, "continent_id");
+        $scope.continents.unshift(nullContinent);
 
         var data = result[1].data;
         $scope.id = data.country_id;
         $scope.name= data.name;
-        $scope.continent_id = data.continent_id;
         $scope.image = data.image;
+
+        $scope.continent = _.find($scope.continents, function(continent) {
+          return data.continent_id === continent.continent_id;
+        });
+
+        console.log($scope.continent);
 
         $scope.isPreparing = false;
       });
     }
 
     var getPayload = function() {
+      $scope.continent_id = $scope.continent.continent_id;
+
       return {
         "name": $scope.name,
         "continent_id": $scope.continent_id,

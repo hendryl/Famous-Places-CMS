@@ -18,14 +18,15 @@
         </div>
         <div class="form-group">
           <label for="input-continent input-narrow">Continent</label>
-          <label for="input-continent input-narrow">{{continent}} lalala</label>
-          <ol class="nya-bs-select" ng-model="continent">
-            <li class="nya-bs-option" nya-bs-option="continent in continents" data-value="continent.continent_id">
-              <a>
-                {{continent.name}}
-              </a>
-            </li>
-          </ol>
+          <div>
+            <ol class="nya-bs-select form-control input-narrow" live-search="true" disabled="isPreparing" ng-model="continent" size="5" title="No continent selected">
+              <li nya-bs-option="option in continents track by option.name">
+                <a class="no-border">
+                  {{option.name}}
+                </a>
+              </li>
+            </ol>
+          </div>
         </div>
         <button class="btn btn-info btn-spacing" ng-click="cancel()">Cancel</button>
         <button class="btn btn-primary" ng-click="save()" ng-disabled="!canSave()" ng-hide="isNewCountry" type="submit">Save changes</button>

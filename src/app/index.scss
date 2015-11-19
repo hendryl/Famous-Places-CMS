@@ -147,6 +147,29 @@ table.auto {
   max-width: 400px;
 }
 
+.no-border {
+  border: none;
+}
+.no-border:focus,
+.no-border:active:focus,
+.no-border.active:focus {
+    outline: 0 none;
+}
+
+.nya-bs-select > {
+  .btn {
+    background-color: $color-white;
+    border: 1px solid #ccc;
+  }
+
+  .btn:focus,
+  .btn:active:focus,
+  .btn.active:focus {
+    background-color: $color-white;
+    border: 1px solid #ccc;
+  }
+}
+
 /**
  *  Do not remove this comments bellow. It's the markers used by gulp-inject to inject
  *  all your sass files automatically
