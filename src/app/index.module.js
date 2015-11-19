@@ -10,12 +10,13 @@ import PlaceFactory from './places/place.factory';
 
 import LoginController from './login/login.controller';
 import MainController from './main/main.controller';
-import ContinentsController from './continents/manage.controller';
-import ContinentDetailController from './continents/detail.controller';
-import CharacteristicsController from './characteristics/manage.controller';
-import CharacteristicDetailController from './characteristics/detail.controller';
+import PlacesController from './places/manage.controller';
 import CountriesController from './countries/manage.controller';
+import ContinentsController from './continents/manage.controller';
+import CharacteristicsController from './characteristics/manage.controller';
 import CountryDetailController from './countries/detail.controller';
+import ContinentDetailController from './continents/detail.controller';
+import CharacteristicDetailController from './characteristics/detail.controller';
 
 import NavbarDirective from './components/navbar/navbar.directive';
 
@@ -40,11 +41,12 @@ angular.module('famousPlacesCms', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanit
 
   .controller('LoginController', LoginController)
   .controller('MainController', MainController)
-  .controller('ContinentsController', ContinentsController)
-  .controller('ContinentDetailController', ContinentDetailController)
-  .controller('CharacteristicsController', CharacteristicsController)
-  .controller('CharacteristicDetailController', CharacteristicDetailController)
+  .controller('PlacesController', PlacesController)
   .controller('CountriesController', CountriesController)
+  .controller('ContinentsController', ContinentsController)
+  .controller('CharacteristicsController', CharacteristicsController)
   .controller('CountryDetailController', CountryDetailController)
+  .controller('ContinentDetailController', ContinentDetailController)
+  .controller('CharacteristicDetailController', CharacteristicDetailController)
 
   .directive('navbar', () => new NavbarDirective());

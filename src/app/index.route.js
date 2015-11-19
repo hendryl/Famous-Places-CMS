@@ -56,6 +56,11 @@ function routerConfig($routeProvider) {
       templateUrl: 'app/countries/detail.html',
       controller: 'CountryDetailController'
     })
+    .when('/places', {
+      title: 'Places',
+      templateUrl: 'app/places/manage.html',
+      controller: 'PlacesController'
+    })
     .otherwise({
       redirectTo: '/home'
     });
