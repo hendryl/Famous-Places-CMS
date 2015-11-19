@@ -48,8 +48,6 @@ class DetailController {
           return data.continent_id === continent.continent_id;
         });
 
-        console.log($scope.continent);
-
         $scope.isPreparing = false;
       });
     }
@@ -83,7 +81,7 @@ class DetailController {
     $scope.save = function() {
       var payload = getPayload();
       CountryFactory.update($scope.id, payload).then(function(result) {
-        toastr.success('country updated.');
+        toastr.success('Country updated.');
         $location.path('/countries');
       }, function(error) {
         toastr.error('Failed to update country: ' + error.data.detail);
