@@ -36,6 +36,9 @@
               <span ng-hide="place.image != ''">No Image</span>
             </td>
             <td class="text-center">
+              {{place.enabled ? "Yes" : "No"}}
+            </td>
+            <td class="text-center">
               <a ng-href="/#/places/{{place.place_id}}">
                 <button class="btn btn-info btn-spacing">Modify</button>
               </a>
@@ -47,7 +50,7 @@
           <tr>
             <td class="text-right" colspan="{{headers.length}}">
               <strong>{{places.length}}
-                places</strong>
+                place{{places.length == 1 ? "" : "s"}}</strong>
             </td>
           </tr>
         </tfoot>

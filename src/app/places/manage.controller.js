@@ -7,6 +7,7 @@ class ManageController {
       'Name',
       'Country',
       'Image',
+      'Enabled',
       'Actions'
     ];
     $scope.places = [];
