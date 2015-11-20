@@ -45,7 +45,6 @@ class DetailController {
 
     $scope.save = function() {
       var payload = getPayload();
-      console.log(payload);
       // PlaceFactory.update($scope.id, payload).then(function(result) {
       //   toastr.success('Place updated.');
       //   $location.path('/places');
