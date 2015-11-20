@@ -10,15 +10,34 @@
       <form name="form">
         <div class="form-group">
           <label for="input-id">Place Id</label>
-          <input class="form-control input-narrow" id="input-id" name="id" ng-model="id" placeholder="Id" type="number" readonly>
+          <input class="form-control input-narrow" id="input-id" ng-model="id" placeholder="Id" readonly type="number">
         </div>
         <div class="form-group">
           <label for="input-name">Place name</label>
-          <input class="form-control input-narrow" id="input-name" name="name" ng-disabled="isPreparing" ng-model="name" placeholder="Place name" type="text">
+          <input class="form-control input-narrow" id="input-name" ng-disabled="isPreparing" ng-model="place.name" placeholder="Place name" type="text">
         </div>
-          <button class="btn btn-info btn-spacing" ng-click="cancel()">Cancel</button>
-          <button class="btn btn-primary" ng-click="save()" type="submit" ng-disabled="!canSave()" ng-hide="isNewPlace">Save changes</button>
-          <button class="btn btn-primary" ng-click="create()" type="submit" ng-disabled="!canSave()" ng-show="isNewPlace">Create</button>
+        <div class="form-group">
+          <div>
+            <label>Enabled</label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              <input ng-disabled="isPreparing" ng-model="place.enabled" ng-value="true" type="radio">Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              <input ng-disabled="isPreparing" ng-model="place.enabled" ng-value="false" type="radio">No
+            </label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="input-description">Description</label>
+          <textarea class="form-control input-medium" id="input-description" ng-model="place.description" placeholder="Place description" rows="3"></textarea>
+        </div>
+        <button class="btn btn-info btn-spacing" ng-click="cancel()">Cancel</button>
+        <button class="btn btn-primary" ng-click="save()" ng-disabled="!canSave()" ng-hide="isNewPlace" type="submit">Save changes</button>
+        <button class="btn btn-primary" ng-click="create()" ng-disabled="!canSave()" ng-show="isNewPlace" type="submit">Create</button>
       </form>
     </div>
   </div>

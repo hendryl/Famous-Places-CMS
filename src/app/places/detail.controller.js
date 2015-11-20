@@ -1,9 +1,10 @@
+var Place = require('./place');
+
 class DetailController {
   constructor($scope, $location, $routeParams, toastr, _, PlaceFactory) {
     'ngInject';
 
-    $scope.id = 0;
-    $scope.name = "";
+    $scope.place = new Place();
     $scope.isPreparing = true;
     $scope.isNewPlace = _.endsWith($location.path(), 'create');
 
@@ -13,7 +14,10 @@ class DetailController {
 
       PlaceFactory.getDetail($scope.id)
         .then(function(result) {
-          $scope.name = result.data.name;
+          $scope.place = new Place(result.data);
+
+          console.log($scope.place);
+
           $scope.isPreparing = false;
         });
     } else {
@@ -22,9 +26,7 @@ class DetailController {
     }
 
     var getPayload = function() {
-      return {
-        "name":$scope.name
-      };
+      return $scope.place;
     };
 
     $scope.canSave = function() {
