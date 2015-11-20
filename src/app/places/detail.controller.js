@@ -1,28 +1,45 @@
 var Place = require('./place');
 
 class DetailController {
-  constructor($scope, $location, $routeParams, toastr, _, PlaceFactory) {
+  constructor($q, $scope, $location, $routeParams, toastr, _, PlaceFactory, CountryFactory) {
     'ngInject';
 
     $scope.place = new Place();
+    $scope.countries = [];
     $scope.isPreparing = true;
     $scope.isNewPlace = _.endsWith($location.path(), 'create');
+
+    var nullCountry = {
+      "name": "No country",
+      "country_id": null
+    };
+
+    var countryListPromise = CountryFactory.getList();
+    var placePromise = null;
 
     if (!$scope.isNewPlace) {
       $scope.id = Number($routeParams.id);
       $scope.header = "Update Place";
-
-      PlaceFactory.getDetail($scope.id)
-        .then(function(result) {
-          $scope.place = new Place(result.data);
-
-          console.log($scope.place);
-
-          $scope.isPreparing = false;
-        });
+      placePromise = PlaceFactory.getDetail($scope.id);
     } else {
       $scope.header = "New Place";
-      $scope.isPreparing = false;
+    }
+
+    if(placePromise === null) {
+      countryListPromise.then(function(result) {
+        $scope.countries = _.sortBy(result.data, "name");
+        $scope.countries.unshift(nullCountry);
+        $scope.isPreparing = false;
+      });
+    } else {
+      $q.all([countryListPromise, placePromise]).then(function(result) {
+          $scope.countries = _.sortBy(result[0].data, "name");
+          $scope.countries.unshift(nullCountry);
+
+          $scope.place = new Place(result.data);
+
+          $scope.isPreparing = false;
+      })
     }
 
     var getPayload = function() {

@@ -28,15 +28,14 @@ class DetailController {
     }
 
     if (countryPromise === null) {
-      continentListPromise
-        .then(function(result) {
-          $scope.continents = _.sortBy(result.data, "continent_id");
+      continentListPromise.then(function(result) {
+          $scope.continents = _.sortBy(result.data, "name");
           $scope.continents.unshift(nullContinent);
           $scope.isPreparing = false;
         });
     } else {
       $q.all([continentListPromise, countryPromise]).then(function(result) {
-        $scope.continents = _.sortBy(result[0].data, "continent_id");
+        $scope.continents = _.sortBy(result[0].data, "name");
         $scope.continents.unshift(nullContinent);
 
         var data = result[1].data;

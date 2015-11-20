@@ -32,9 +32,28 @@
           </div>
         </div>
         <div class="form-group">
+          <label for="input-continent">Continent</label>
+          <div>
+            <ol class="nya-bs-select form-control input-narrow" live-search="true" disabled="isPreparing" ng-model="place.country_id" size="5" title="No country selected">
+              <li nya-bs-option="option in countries track by option.name">
+                <a class="no-border">
+                  {{option.name}}
+                </a>
+              </li>
+            </ol>
+          </div>
+        </div>
+        <div class="form-group">
           <label for="input-description">Description</label>
           <textarea class="form-control input-medium" id="input-description" ng-model="place.description" placeholder="Place description" rows="3"></textarea>
         </div>
+        <div class="form-group">
+          <label for="input-image">Link</label>
+          <input class="form-control input-medium" id="input-link" ng-disabled="isPreparing" ng-model="place.link" placeholder="Additional info URL" type="text">
+        </div>
+        <!-- IMAGE -->
+        <!-- LATLONG -->
+        <!-- TAGS -->
         <button class="btn btn-info btn-spacing" ng-click="cancel()">Cancel</button>
         <button class="btn btn-primary" ng-click="save()" ng-disabled="!canSave()" ng-hide="isNewPlace" type="submit">Save changes</button>
         <button class="btn btn-primary" ng-click="create()" ng-disabled="!canSave()" ng-show="isNewPlace" type="submit">Create</button>
