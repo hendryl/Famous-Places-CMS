@@ -6,15 +6,18 @@ import runBlock from './index.run';
 import ContinentFactory from './continents/continent.factory';
 import CharacteristicFactory from './characteristics/characteristic.factory';
 import CountryFactory from './countries/country.factory';
+import PlaceFactory from './places/place.factory';
 
 import LoginController from './login/login.controller';
 import MainController from './main/main.controller';
-import ContinentsController from './continents/manage.controller';
-import ContinentDetailController from './continents/detail.controller';
-import CharacteristicsController from './characteristics/manage.controller';
-import CharacteristicDetailController from './characteristics/detail.controller';
+import PlacesController from './places/manage.controller';
 import CountriesController from './countries/manage.controller';
+import ContinentsController from './continents/manage.controller';
+import CharacteristicsController from './characteristics/manage.controller';
+import PlaceDetailController from './places/detail.controller';
 import CountryDetailController from './countries/detail.controller';
+import ContinentDetailController from './continents/detail.controller';
+import CharacteristicDetailController from './characteristics/detail.controller';
 
 import NavbarDirective from './components/navbar/navbar.directive';
 
@@ -35,14 +38,17 @@ angular.module('famousPlacesCms', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanit
   .factory('ContinentFactory', ['$http', 'baseURLConfig', ($http, baseURLConfig) => new ContinentFactory($http, baseURLConfig)])
   .factory('CharacteristicFactory', ['$http', 'baseURLConfig', ($http, baseURLConfig) => new CharacteristicFactory($http, baseURLConfig)])
   .factory('CountryFactory', ['$http', 'baseURLConfig', ($http, baseURLConfig) => new CountryFactory($http, baseURLConfig)])
+  .factory('PlaceFactory', ['$http', 'baseURLConfig', ($http, baseURLConfig) => new PlaceFactory($http, baseURLConfig)])
 
   .controller('LoginController', LoginController)
   .controller('MainController', MainController)
-  .controller('ContinentsController', ContinentsController)
-  .controller('ContinentDetailController', ContinentDetailController)
-  .controller('CharacteristicsController', CharacteristicsController)
-  .controller('CharacteristicDetailController', CharacteristicDetailController)
+  .controller('PlacesController', PlacesController)
   .controller('CountriesController', CountriesController)
+  .controller('ContinentsController', ContinentsController)
+  .controller('CharacteristicsController', CharacteristicsController)
+  .controller('PlaceDetailController', PlaceDetailController)
   .controller('CountryDetailController', CountryDetailController)
+  .controller('ContinentDetailController', ContinentDetailController)
+  .controller('CharacteristicDetailController', CharacteristicDetailController)
 
   .directive('navbar', () => new NavbarDirective());

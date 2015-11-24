@@ -2,11 +2,11 @@
 <div class="container">
   <div class="row header-padding">
     <div class="col-xs-8 col-md-8">
-      <span class="h2">Continents</span>
+      <span class="h2">Places</span>
     </div>
     <div class="col-xs-4 col-md-4 text-right">
-      <a href="/#/continents/create">
-        <button class="btn btn-primary">Create new continent</button>
+      <a href="/#/places/create">
+        <button class="btn btn-primary">Create new place</button>
       </a>
     </div>
   </div>
@@ -21,26 +21,36 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="continent in continents">
+          <tr ng-repeat="place in places">
             <td class="text-center">
-              {{continent.continent_id}}
+              {{place.place_id}}
             </td>
             <td class="text-center">
-              {{continent.name}}
+              {{place.name}}
             </td>
             <td class="text-center">
-              <a ng-href="/#/continents/{{continent.continent_id}}">
+              {{place.country}}
+            </td>
+            <td class="text-center">
+              <img class="table-image" ng-src="{{place.image}}" alt="">
+              <span ng-hide="place.image != ''">No Image</span>
+            </td>
+            <td class="text-center">
+              {{place.enabled ? "Yes" : "No"}}
+            </td>
+            <td class="text-center">
+              <a ng-href="/#/places/{{place.place_id}}">
                 <button class="btn btn-info btn-spacing">Modify</button>
               </a>
-              <button class="btn btn-danger" ng-click="delete(continent.continent_id, continent.name)">Delete</button>
+              <button class="btn btn-danger" ng-click="delete(place.place_id, place.name)">Delete</button>
             </td>
           </tr>
         </tbody>
         <tfoot>
           <tr>
             <td class="text-right" colspan="{{headers.length}}">
-              <strong>{{continents.length}}
-                continent{{continents.length == 1 ? "" : "s"}}</strong>
+              <strong>{{places.length}}
+                place{{places.length == 1 ? "" : "s"}}</strong>
             </td>
           </tr>
         </tfoot>

@@ -56,6 +56,21 @@ function routerConfig($routeProvider) {
       templateUrl: 'app/countries/detail.html',
       controller: 'CountryDetailController'
     })
+    .when('/places', {
+      title: 'Places',
+      templateUrl: 'app/places/manage.html',
+      controller: 'PlacesController'
+    })
+    .when('/places/create', {
+      title: 'New Place',
+      templateUrl: 'app/places/detail.html',
+      controller: 'PlaceDetailController'
+    })
+    .when('/places/:id', {
+      title: 'Update Place',
+      templateUrl: 'app/places/detail.html',
+      controller: 'PlaceDetailController'
+    })
     .otherwise({
       redirectTo: '/home'
     });
