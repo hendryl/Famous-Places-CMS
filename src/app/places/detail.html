@@ -72,11 +72,11 @@
             <label>Image</label>
           </div>
           <div>
-            <img alt="no image" class="input-image image-small" ng-src="{{photo.url}}"/>
-            {{photo.title}}
-          </div>
-          <div>
-            <button class="btn btn-info" ng-click="browseImage()" type="button">Browse</button>
+            <img alt="no image" class="input-image" ng-src="{{photo.url}}"/>
+            <button class="btn btn-primary" ng-click="browseImage()" type="button">Browse Image</button>
+            <div>
+              {{photo.title}}
+            </div>
           </div>
         </div>
         <!-- LATLONG -->

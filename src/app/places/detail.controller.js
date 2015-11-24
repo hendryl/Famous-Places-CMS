@@ -66,7 +66,7 @@ class DetailController {
     $scope.browseImage = function() {
       var modalInstance = $uibModal.open({
         animation: true,
-        templateUrl: 'app/places/browse.html',
+        templateUrl: 'app/places/browse/browse.html',
         controller: 'BrowseController',
         size: 'lg',
         resolve: {

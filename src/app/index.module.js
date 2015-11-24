@@ -19,7 +19,7 @@ import PlaceDetailController from './places/detail.controller';
 import CountryDetailController from './countries/detail.controller';
 import ContinentDetailController from './continents/detail.controller';
 import CharacteristicDetailController from './characteristics/detail.controller';
-import BrowseController from './places/browse.controller';
+import BrowseController from './places/browse/browse.controller';
 
 import NavbarDirective from './components/navbar/navbar.directive';
 
