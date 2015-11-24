@@ -48,26 +48,37 @@
 
         <div class="form-group">
           <label for="input-description">Description</label>
-          <textarea class="form-control input-medium" id="input-description" ng-model="place.description" placeholder="Place description" rows="3" ng-disabled="isPreparing"></textarea>
+          <textarea class="form-control input-medium" id="input-description" ng-disabled="isPreparing" ng-model="place.description" placeholder="Place description" rows="3"></textarea>
         </div>
 
         <div class="form-group">
-          <label for="input-image">Link</label>
+          <label for="input-link">Link</label>
           <input class="form-control input-medium" id="input-link" ng-disabled="isPreparing" ng-model="place.link" placeholder="Additional info URL" type="text">
         </div>
 
         <div class="form-group">
           <div>
-            <label for="input-image">Characteristics</label>
+            <label for="input-characteristics">Characteristics</label>
           </div>
           <div class="checkbox-inline" ng-repeat="option in characteristics">
             <label>
-              <input type="checkbox" ng-model="option.checked" ng-disabled="isPreparing">
+              <input ng-disabled="isPreparing" ng-model="option.checked" type="checkbox">
               {{option.name}}
             </label>
           </div>
         </div>
-        <!-- IMAGE -->
+        <div class="form-group">
+          <div>
+            <label>Image</label>
+          </div>
+          <div>
+            <img alt="no image" class="input-image image-small" ng-src="{{photo.url}}"/>
+            {{photo.title}}
+          </div>
+          <div>
+            <button class="btn btn-info" ng-click="browseImage()" type="button">Browse</button>
+          </div>
+        </div>
         <!-- LATLONG -->
         <button class="btn btn-info btn-spacing" ng-click="cancel()">Cancel</button>
         <button class="btn btn-primary" ng-click="save()" ng-disabled="!canSave()" ng-hide="isNewPlace" type="submit">Save changes</button>
