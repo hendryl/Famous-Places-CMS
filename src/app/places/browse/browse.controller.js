@@ -1,17 +1,17 @@
 class BrowseController {
   constructor($scope, $uibModalInstance, ImageFactory, text) {
+    var imageCount = 60;
 
     $scope.text = text;
     $scope.photos = [];
     $scope.canShowPhotos = false;
 
     var getImages = function(query) {
-      console.log('asfdasd');
 
-      ImageFactory.getList(query).then(function(result) {
+      ImageFactory.getList(query, imageCount).then(function(result) {
         var row = 0;
         var photos = [];
-        var data = result.data.splice(0,48);
+        var data = result.data;
         while (data.length) {
           photos[row] = data.splice(0, 12);
           row += 1;

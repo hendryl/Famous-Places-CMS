@@ -2,9 +2,9 @@ class ImageFactory {
   constructor($http, baseURLConfig) {
     'ngInject';
 
-    this.getList = function(query) {
+    this.getList = function(query, count) {
       query = query.replace(' ', '+');
-      return $http.get(baseURLConfig.rootAPI + '/flickr/photos?q=' + query);
+      return $http.get(baseURLConfig.rootAPI + '/flickr/photos?q=' + query + "&size=" + count);
     };
   }
 }
