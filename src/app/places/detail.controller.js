@@ -10,6 +10,8 @@ class DetailController {
     $scope.isPreparing = true;
     $scope.isNewPlace = _.endsWith($location.path(), 'create');
 
+    var hasBrowsed = false;
+
     var nullCountry = {
       "name": "No country",
       "country_id": null
@@ -28,7 +30,7 @@ class DetailController {
     };
 
     $scope.canSave = function() {
-      return $scope.form.$dirty;
+      return $scope.form.$dirty || hasBrowsed;
     };
 
     $scope.cancel = function() {
@@ -79,6 +81,7 @@ class DetailController {
       modalInstance.result.then(function(photo) {
         $scope.place.photo_id = photo.photo_id;
         $scope.photo = photo;
+        hasBrowsed = true;
       });
     };
 
