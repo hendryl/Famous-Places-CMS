@@ -1,7 +1,7 @@
 var Place = require('./place');
 
 class DetailController {
-  constructor($q, $scope, $location, $routeParams, toastr, _, PlaceFactory, CountryFactory, CharacteristicFactory) {
+  constructor($q, $scope, $location, $routeParams, toastr, _, PlaceFactory, CountryFactory, CharacteristicFactory, $uibModal) {
     'ngInject';
 
     $scope.place = new Place();
@@ -9,6 +9,8 @@ class DetailController {
     $scope.characteristics = [];
     $scope.isPreparing = true;
     $scope.isNewPlace = _.endsWith($location.path(), 'create');
+
+    var hasBrowsed = false;
 
     var nullCountry = {
       "name": "No country",
@@ -28,7 +30,7 @@ class DetailController {
     };
 
     $scope.canSave = function() {
-      return $scope.form.$dirty;
+      return $scope.form.$dirty || hasBrowsed;
     };
 
     $scope.cancel = function() {
@@ -60,6 +62,26 @@ class DetailController {
         $location.path('/places');
       }, function(error) {
         toastr.error('Failed to create place: ' + error.data.detail);
+      });
+    };
+
+    $scope.browseImage = function() {
+      var modalInstance = $uibModal.open({
+        animation: true,
+        templateUrl: 'app/places/browse/browse.html',
+        controller: 'BrowseController',
+        size: 'lg',
+        resolve: {
+          text: function() {
+            return $scope.place.name;
+          }
+        }
+      });
+
+      modalInstance.result.then(function(photo) {
+        $scope.place.photo_id = photo.photo_id;
+        $scope.photo = photo;
+        hasBrowsed = true;
       });
     };
 

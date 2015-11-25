@@ -10,16 +10,16 @@
       <form name="form">
         <div class="form-group">
           <label for="input-id">Country Id</label>
-          <input class="form-control input-narrow" id="input-id" name="id" ng-model="id" placeholder="Id" readonly type="number">
+          <input class="form-control input-medium" id="input-id" name="id" ng-model="id" placeholder="Id" readonly type="number">
         </div>
         <div class="form-group">
           <label for="input-name">Country name</label>
-          <input class="form-control input-narrow" id="input-name" name="name" ng-disabled="isPreparing" ng-model="name" placeholder="Country name" type="text">
+          <input class="form-control input-medium" id="input-name" name="name" ng-disabled="isPreparing" ng-model="name" placeholder="Country name" type="text">
         </div>
         <div class="form-group">
           <label for="input-continent">Continent</label>
           <div>
-            <ol class="nya-bs-select form-control input-narrow" live-search="true" disabled="isPreparing" ng-model="continent" size="5" title="No continent selected">
+            <ol class="nya-bs-select form-control input-medium" live-search="true" disabled="isPreparing" ng-model="continent" size="5" title="No continent selected">
               <li nya-bs-option="option in continents track by option.name">
                 <a class="no-border">
                   {{option.name}}

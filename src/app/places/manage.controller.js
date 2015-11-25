@@ -32,7 +32,7 @@ class ManageController {
       data = _.sortBy(data, "place_id");
       data = _.each(data, function(place) {
         place.continent = place.continent === null ? "-" : place.continent;
-        place.image = place.image === null ? "" : place.image;
+        place.image = place.image === null || place.image === undefined ? "" : place.image;
       });
       $scope.places = data;
     });

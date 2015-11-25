@@ -5,18 +5,17 @@
       <span class="h2">{{header}}</span>
     </div>
   </div>
-  <div class="row">
-    <div class="col-xs-12">
-      <form name="form">
+  <form name="form">
+    <div class="row">
+      <div class="col-xs-12">
         <div class="form-group">
           <label for="input-id">Place Id</label>
-          <input class="form-control input-narrow" id="input-id" ng-model="id" placeholder="Id" readonly type="number">
+          <input class="form-control input-medium" id="input-id" ng-model="id" placeholder="Id" readonly type="number">
         </div>
         <div class="form-group">
           <label for="input-name">Place name</label>
-          <input class="form-control input-narrow" id="input-name" ng-disabled="isPreparing" ng-model="place.name" placeholder="Place name" type="text">
+          <input class="form-control input-medium" id="input-name" ng-disabled="isPreparing" ng-model="place.name" placeholder="Place name" type="text">
         </div>
-
         <div class="form-group">
           <div>
             <label>Enabled</label>
@@ -36,7 +35,7 @@
         <div class="form-group">
           <label for="input-continent">Continent</label>
           <div>
-            <ol class="nya-bs-select form-control input-narrow" disabled="isPreparing" live-search="true" ng-model="country" size="5">
+            <ol class="nya-bs-select form-control input-medium" disabled="isPreparing" live-search="true" ng-model="country" size="5">
               <li nya-bs-option="option in countries track by option.name">
                 <a class="no-border">
                   {{option.name}}
@@ -48,31 +47,47 @@
 
         <div class="form-group">
           <label for="input-description">Description</label>
-          <textarea class="form-control input-medium" id="input-description" ng-model="place.description" placeholder="Place description" rows="3" ng-disabled="isPreparing"></textarea>
+          <textarea class="form-control input-medium" id="input-description" ng-disabled="isPreparing" ng-model="place.description" placeholder="Place description" rows="3"></textarea>
         </div>
 
         <div class="form-group">
-          <label for="input-image">Link</label>
+          <label for="input-link">Link</label>
           <input class="form-control input-medium" id="input-link" ng-disabled="isPreparing" ng-model="place.link" placeholder="Additional info URL" type="text">
         </div>
 
         <div class="form-group">
           <div>
-            <label for="input-image">Characteristics</label>
+            <label for="input-characteristics">Characteristics</label>
           </div>
           <div class="checkbox-inline" ng-repeat="option in characteristics">
             <label>
-              <input type="checkbox" ng-model="option.checked" ng-disabled="isPreparing">
+              <input ng-disabled="isPreparing" ng-model="option.checked" type="checkbox">
               {{option.name}}
             </label>
           </div>
         </div>
-        <!-- IMAGE -->
-        <!-- LATLONG -->
-        <button class="btn btn-info btn-spacing" ng-click="cancel()">Cancel</button>
-        <button class="btn btn-primary" ng-click="save()" ng-disabled="!canSave()" ng-hide="isNewPlace" type="submit">Save changes</button>
-        <button class="btn btn-primary" ng-click="create()" ng-disabled="!canSave()" ng-show="isNewPlace" type="submit">Create</button>
-      </form>
+      </div>
     </div>
-  </div>
+
+    <div class="form-group">
+      <div>
+        <label>Image</label>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <input class="form-control input-medium col-xs-6" ng-model="photo.title" readonly type="text" placeholder="No image">
+          <button class="btn btn-primary btn-inline-margin" ng-click="browseImage()" ng-disabled="isPreparing" type="button">Browse Image</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <img class="input-image" ng-src="{{photo.url}}"/>
+        </div>
+      </div>
+    </div>
+    <!-- LATLONG -->
+    <button class="btn btn-info btn-spacing" ng-click="cancel()">Cancel</button>
+    <button class="btn btn-primary" ng-click="save()" ng-disabled="!canSave()" ng-hide="isNewPlace" type="submit">Save changes</button>
+    <button class="btn btn-primary" ng-click="create()" ng-disabled="!canSave()" ng-show="isNewPlace" type="submit">Create</button>
+  </form>
 </div>
