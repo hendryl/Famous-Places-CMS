@@ -2,16 +2,12 @@ class BrowseController {
   constructor($scope, $uibModalInstance, ImageFactory, text) {
 
     $scope.text = text;
-
-    $scope.select = function(photo) {
-      $uibModalInstance.close(photo);
-    };
-
-    $scope.cancel = function() {
-      $uibModalInstance.dismiss('cancel');
-    };
+    $scope.photos = [];
+    $scope.canShowPhotos = false;
 
     var getImages = function(query) {
+      console.log('asfdasd');
+
       ImageFactory.getList(query).then(function(result) {
         var row = 0;
         var photos = [];
@@ -21,10 +17,24 @@ class BrowseController {
           row += 1;
         }
         $scope.photos = photos;
+        $scope.canShowPhotos = true;
       });
     };
 
-    getImages($scope.text);
+    $scope.select = function(photo) {
+      $uibModalInstance.close(photo);
+    };
+
+    $scope.cancel = function() {
+      $uibModalInstance.dismiss('cancel');
+    };
+
+    $scope.search = function() {
+      $scope.canShowPhotos = false;
+      getImages($scope.text);
+    };
+
+    $scope.search();
   }
 }
 

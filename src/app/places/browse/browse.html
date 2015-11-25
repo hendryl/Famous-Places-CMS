@@ -4,7 +4,9 @@
 </div>
 <div class="modal-body">
   <input ng-model="text" type="text">
+  <button class="btn btn-primary" ng-click="search()">Search</button>
   <div class="container-fluid">
+    <h4 class="text-center" ng-hide="canShowPhotos">Searching...</h4>
     <div ng-repeat="row in photos">
       <div class="row">
         <div ng-repeat="photo in row">
