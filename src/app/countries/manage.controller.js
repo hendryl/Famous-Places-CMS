@@ -31,7 +31,7 @@ class ManageController {
       data = _.sortBy(data, "country_id");
       data = _.each(data, function(country) {
         country.continent = country.continent === null ? "-" : country.continent;
-        country.image = country.image === null ? "" : country.image;
+        country.image = country.image === null || country.image === undefined ? "" : country.image;
       });
       $scope.countries = data;
     });
