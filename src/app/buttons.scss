@@ -62,3 +62,14 @@
 .btn-spacing {
   margin-right: 4px;
 }
+
+.btn-inline-margin {
+  margin-left: 10px;
+}
+
+@media screen and (max-width : 561px) {
+  .btn-inline-margin {
+    margin-top: 10px; 
+    margin-left: 10px;
+  }
+}
