@@ -1,7 +1,7 @@
 var Place = require('./place');
 
 class DetailController {
-  constructor($q, $scope, $location, $routeParams, toastr, _, PlaceFactory, CountryFactory, CharacteristicFactory, $uibModal) {
+  constructor($q, $scope, $location, $routeParams, toastr, _, PlaceFactory, CountryFactory, CharacteristicFactory, $uibModal, NgMap, mapsKey) {
     'ngInject';
 
     $scope.place = new Place();
@@ -11,7 +11,6 @@ class DetailController {
     $scope.isNewPlace = _.endsWith($location.path(), 'create');
 
     var hasBrowsed = false;
-
     var nullCountry = {
       "name": "No country",
       "country_id": null
@@ -85,43 +84,59 @@ class DetailController {
       });
     };
 
-    var countryListPromise = CountryFactory.getList();
-    var characteristicListPromise = CharacteristicFactory.getList();
-    var placePromise = null;
-
-    if (!$scope.isNewPlace) {
-      $scope.id = Number($routeParams.id);
-      $scope.header = "Update Place";
-      placePromise = PlaceFactory.getDetail($scope.id);
-    } else {
-      $scope.id = 0;
-      $scope.header = "New Place";
+    $scope.centerMap = function(latLng) {
+      NgMap.getMap().then(function(map) {
+        map.panTo(latLng);
+      })
     }
 
-    $q.all([countryListPromise, characteristicListPromise, placePromise]).then(function(result) {
-      $scope.countries = _.sortBy(result[0].data, "name");
-      $scope.countries.unshift(nullCountry);
+    $scope.moveMarker = function(event) {
+      $scope.centerMap(event.latLng);
+      $scope.place.latitude = event.latLng.lat();
+      $scope.place.longitude = event.latLng.lng();
+    };
 
-      if (result[2] !== null) {
-        $scope.place = new Place(result[2].data);
-        $scope.country = _.find($scope.countries, function(country) {
-          return $scope.place.country_id === country.country_id;
-        });
+    var prepareData = function() {
+      var countryListPromise = CountryFactory.getList();
+      var characteristicListPromise = CharacteristicFactory.getList();
+      var placePromise = null;
+
+      if (!$scope.isNewPlace) {
+        $scope.id = Number($routeParams.id);
+        $scope.header = "Update Place";
+        placePromise = PlaceFactory.getDetail($scope.id);
+      } else {
+        $scope.id = 0;
+        $scope.header = "New Place";
       }
 
-      var characteristics = _.sortBy(result[1].data, "name");
-      characteristics = _.each(characteristics, function(ch) {
-        if (_.includes($scope.place.tags, ch.characteristic_id)) {
-          ch.checked = true;
-        } else {
-          ch.checked = false;
+      $q.all([countryListPromise, characteristicListPromise, placePromise]).then(function(result) {
+        $scope.countries = _.sortBy(result[0].data, "name");
+        $scope.countries.unshift(nullCountry);
+
+        if (result[2] !== null) {
+          $scope.place = new Place(result[2].data);
+          $scope.country = _.find($scope.countries, function(country) {
+            return $scope.place.country_id === country.country_id;
+          });
         }
+
+        var characteristics = _.sortBy(result[1].data, "name");
+        characteristics = _.each(characteristics, function(ch) {
+          if (_.includes($scope.place.tags, ch.characteristic_id)) {
+            ch.checked = true;
+          } else {
+            ch.checked = false;
+          }
+        });
+
+        $scope.characteristics = characteristics;
+        $scope.isPreparing = false;
+        $scope.googleMapsURL = "https://maps.google.com/maps/api/js?libraries=places&key=" + mapsKey;
       });
+    };
 
-      $scope.characteristics = characteristics;
-
-      $scope.isPreparing = false;
-    });
+    prepareData();
   }
 }
 
