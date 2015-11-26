@@ -113,6 +113,8 @@
             <div class="padded">
               <input id="maps-input" class="form-control" ng-disabled="isPreparing">
             </div>
+            <!-- TODO change center so map center != marker location -->
+            <!-- TODO disable street view  -->
             <ng-map on-drag="dragMap(event)" center="{{place.latitude}}, {{place.longitude}}" map-initialized="prepareMap(map)" zoom="16" on-click="placeMarker(event)">
               <marker centered=false draggable="true" on-dragstart="startMoveMarker(event)" on-dragend="endMoveMarker(event)" on-drag="moveMarker(event)" position="{{place.latitude}}, {{place.longitude}}">
             </ng-map>

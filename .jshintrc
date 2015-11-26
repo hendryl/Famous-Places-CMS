@@ -13,6 +13,8 @@
     "angular": false,
     "inject": false,
     "module": false,
-    "confirm": false
+    "confirm": false,
+    "google": false,
+    "window": false
   }
 }

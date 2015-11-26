@@ -93,7 +93,9 @@ class DetailController {
       }
 
       var place = places[0];
-      if (!place.geometry) return;
+      if (!place.geometry) {
+        return;
+      }
 
       $scope.moveToLocation(place);
     };
@@ -101,7 +103,7 @@ class DetailController {
     $scope.prepareMap = function(map) {
       $scope.map = map;
 
-      var input = window.document.getElementById('maps-input')
+      var input = window.document.getElementById('maps-input');
       $scope.searchBox = new google.maps.places.SearchBox(input);
 
       $scope.searchBox.addListener('places_changed', function() {
@@ -116,7 +118,7 @@ class DetailController {
         $scope.map.fitBounds(place.geometry.viewport);
       } else {
         $scope.centerMap(place.geometry.location);
-        $scope.map.setZoom(16);
+        $scope.map.setZoom(defaultZoom);
       }
     };
 
