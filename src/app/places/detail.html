@@ -110,6 +110,9 @@
         </div>
         <div class="col-sm-6 col-xs-12">
           <div map-lazy-load-params="{{googleMapsURL}}" map-lazy-load="https://maps.google.com/maps/api/js">
+            <div class="padded">
+              <input class="form-control" ng-disabled="isPreparing" on-place-changed="moveLocation(place)" places-auto-complete types="['address']" on-place-changed="myCallback(place)">
+            </div>
             <ng-map center="{{place.latitude}}, {{place.longitude}}" map-initialized="prepareMap(map)" zoom="10" on-click="moveMarker(event)">
               <marker position="{{place.latitude}}, {{place.longitude}}">
             </ng-map>

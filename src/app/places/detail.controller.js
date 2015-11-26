@@ -92,6 +92,10 @@ class DetailController {
       })
     }
 
+    $scope.moveToLocation = function(place) {
+      console.log(place);
+    }
+
     $scope.moveMarker = function(event) {
       $scope.centerMap(event.latLng);
       $scope.place.latitude = event.latLng.lat().toFixed(latLngDecimals);
