@@ -29,6 +29,7 @@ angular.module('famousPlacesCms', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanit
   .constant('moment', moment)
   .constant('toastr', toastr)
   .constant('_', lodash)
+  .constant('mapsKey', "AIzaSyAfgZDFD6gr3HSXRnUu_ihlc3gbvYn97FA")
   .constant('baseURLConfig', {
     'rootAPI': 'https://famous-places-api.herokuapp.com/api'
   })
