@@ -96,7 +96,7 @@ class DetailController {
       if (!place.geometry) return;
 
       $scope.moveToLocation(place);
-    }
+    };
 
     $scope.prepareMap = function(map) {
       $scope.map = map;
@@ -109,7 +109,7 @@ class DetailController {
 
         checkPlace(places);
       });
-    }
+    };
 
     $scope.moveToLocation = function(place) {
       if (place.geometry.viewport) {
@@ -118,14 +118,18 @@ class DetailController {
         $scope.centerMap(place.geometry.location);
         $scope.map.setZoom(16);
       }
-    }
+    };
 
     $scope.centerMap = function(latLng) {
       $scope.map.panTo(latLng);
-    }
+    };
+
+    $scope.placeMarker = function(event) {
+      $scope.centerMap(event.latLng);
+      $scope.moveMarker(event);
+    };
 
     $scope.moveMarker = function(event) {
-      $scope.centerMap(event.latLng);
       $scope.place.latitude = event.latLng.lat().toFixed(latLngDecimals);
       $scope.place.longitude = event.latLng.lng().toFixed(latLngDecimals);
       hasChanged = true;
