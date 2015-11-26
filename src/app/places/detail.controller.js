@@ -4,6 +4,7 @@ class DetailController {
   constructor($q, $scope, $location, $routeParams, toastr, _, PlaceFactory, CountryFactory, CharacteristicFactory, $uibModal, NgMap, mapsKey) {
     'ngInject';
 
+    $scope.googleMapsURL = "https://maps.google.com/maps/api/js?libraries=places&key=" + mapsKey;
     $scope.place = new Place();
     $scope.countries = [];
     $scope.characteristics = [];
@@ -132,7 +133,6 @@ class DetailController {
 
         $scope.characteristics = characteristics;
         $scope.isPreparing = false;
-        $scope.googleMapsURL = "https://maps.google.com/maps/api/js?libraries=places&key=" + mapsKey;
       });
     };
 
