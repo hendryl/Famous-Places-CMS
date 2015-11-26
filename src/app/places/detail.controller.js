@@ -1,4 +1,9 @@
 var Place = require('./place');
+var latLngDecimals = 6;
+var nullCountry = {
+  "name": "No country",
+  "country_id": null
+};
 
 class DetailController {
   constructor($q, $scope, $location, $routeParams, toastr, _, PlaceFactory, CountryFactory, CharacteristicFactory, $uibModal, NgMap, mapsKey) {
@@ -11,11 +16,7 @@ class DetailController {
     $scope.isPreparing = true;
     $scope.isNewPlace = _.endsWith($location.path(), 'create');
 
-    var hasBrowsed = false;
-    var nullCountry = {
-      "name": "No country",
-      "country_id": null
-    };
+    var hasChanged = false;
 
     var checkedCharacteristics = function() {
       return _.filter($scope.characteristics, function(ch) {
@@ -30,7 +31,7 @@ class DetailController {
     };
 
     $scope.canSave = function() {
-      return $scope.form.$dirty || hasBrowsed;
+      return $scope.form.$dirty || hasChanged;
     };
 
     $scope.cancel = function() {
@@ -81,7 +82,7 @@ class DetailController {
       modalInstance.result.then(function(photo) {
         $scope.place.photo_id = photo.photo_id;
         $scope.photo = photo;
-        hasBrowsed = true;
+        hasChanged = true;
       });
     };
 
@@ -93,8 +94,9 @@ class DetailController {
 
     $scope.moveMarker = function(event) {
       $scope.centerMap(event.latLng);
-      $scope.place.latitude = event.latLng.lat();
-      $scope.place.longitude = event.latLng.lng();
+      $scope.place.latitude = event.latLng.lat().toFixed(latLngDecimals);
+      $scope.place.longitude = event.latLng.lng().toFixed(latLngDecimals);
+      hasChanged = true;
     };
 
     var prepareData = function() {
