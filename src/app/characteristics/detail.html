@@ -16,9 +16,9 @@
           <label for="input-name">Characteristic name</label>
           <input class="form-control input-medium" id="input-name" name="name" ng-disabled="isPreparing" ng-model="name" placeholder="Characteristic name" type="text">
         </div>
-          <button class="btn btn-info btn-spacing" ng-click="cancel()">Cancel</button>
-          <button class="btn btn-primary" ng-click="save()" ng-disabled="!canSave()" ng-hide="isNewCharacteristic">Save changes</button>
-          <button class="btn btn-primary" ng-click="create()" ng-disabled="!canSave()" ng-show="isNewCharacteristic">Create</button>
+          <button type="button" class="btn btn-info btn-spacing" ng-click="cancel()">Cancel</button>
+          <button type="button" class="btn btn-primary" ng-click="save()" ng-disabled="!canSave()" ng-hide="isNewCharacteristic">Save changes</button>
+          <button type="button" class="btn btn-primary" ng-click="create()" ng-disabled="!canSave()" ng-show="isNewCharacteristic">Create</button>
       </form>
     </div>
   </div>
