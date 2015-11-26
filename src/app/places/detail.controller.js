@@ -1,5 +1,6 @@
 var Place = require('./place');
 var latLngDecimals = 6;
+var defaultZoom = 16;
 var nullCountry = {
   "name": "No country",
   "country_id": null
@@ -9,7 +10,7 @@ class DetailController {
   constructor($q, $scope, $location, $routeParams, toastr, _, PlaceFactory, CountryFactory, CharacteristicFactory, $uibModal, NgMap, mapsKey) {
     'ngInject';
 
-    $scope.googleMapsURL = "https://maps.google.com/maps/api/js?libraries=places&key=" + mapsKey;
+    $scope.googleMapsURL = "https://maps.google.com/maps/api/js?libraries=places&callback=prepareMap&key=" + mapsKey;
     $scope.place = new Place();
     $scope.countries = [];
     $scope.characteristics = [];
@@ -86,14 +87,41 @@ class DetailController {
       });
     };
 
-    $scope.centerMap = function(latLng) {
-      NgMap.getMap().then(function(map) {
-        map.panTo(latLng);
-      })
+    var checkPlace = function(places) {
+      if (places === 0) {
+        return;
+      }
+
+      var place = places[0];
+      if (!place.geometry) return;
+
+      $scope.moveToLocation(place);
+    }
+
+    $scope.prepareMap = function(map) {
+      $scope.map = map;
+
+      var input = window.document.getElementById('maps-input')
+      $scope.searchBox = new google.maps.places.SearchBox(input);
+
+      $scope.searchBox.addListener('places_changed', function() {
+        var places = $scope.searchBox.getPlaces();
+
+        checkPlace(places);
+      });
     }
 
     $scope.moveToLocation = function(place) {
-      console.log(place);
+      if (place.geometry.viewport) {
+        $scope.map.fitBounds(place.geometry.viewport);
+      } else {
+        $scope.centerMap(place.geometry.location);
+        $scope.map.setZoom(16);
+      }
+    }
+
+    $scope.centerMap = function(latLng) {
+      $scope.map.panTo(latLng);
     }
 
     $scope.moveMarker = function(event) {
