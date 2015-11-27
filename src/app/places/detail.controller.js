@@ -40,10 +40,10 @@ class DetailController {
       return $scope.place;
     };
 
-    // TODO: name must not be empty!
     // TODO: default lat/long to 0 if empty
     $scope.canSave = function() {
-      return $scope.form.$dirty || hasChanged;
+      return ($scope.form.$dirty || hasChanged) &&
+      !_.isEmpty($scope.place.name);
     };
 
     $scope.cancel = function() {
