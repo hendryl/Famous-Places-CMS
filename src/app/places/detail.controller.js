@@ -107,6 +107,12 @@ class DetailController {
     $scope.prepareMap = function(map) {
       $scope.map = map;
 
+      var options = {
+        streetViewControl: false
+      };
+
+      map.setOptions(options);
+
       var input = window.document.getElementById('maps-input');
       $scope.searchBox = new google.maps.places.SearchBox(input);
 
