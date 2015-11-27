@@ -7,7 +7,7 @@ var nullCountry = {
 };
 
 class DetailController {
-  constructor($q, $scope, $location, $routeParams, toastr, _, PlaceFactory, CountryFactory, CharacteristicFactory, $uibModal, NgMap, mapsKey) {
+  constructor($q, $scope, $location, $routeParams, toastr, _, PlaceFactory, CountryFactory, CharacteristicFactory, ImageFactory, $uibModal, NgMap, mapsKey) {
     'ngInject';
 
     $scope.googleMapsURL = "https://maps.google.com/maps/api/js?libraries=places&callback=prepareMap&key=" + mapsKey;
@@ -26,7 +26,7 @@ class DetailController {
     var checkedCharacteristics = function() {
       var filterFunction = function(ch) {
         return ch.checked === true;
-      }
+      };
 
       return _.chain($scope.characteristics)
       .filter(filterFunction)
@@ -154,7 +154,6 @@ class DetailController {
       hasChanged = true;
     };
 
-    //TODO: Get data for image!
     var prepareData = function() {
       var countryListPromise = CountryFactory.getList();
       var characteristicListPromise = CharacteristicFactory.getList();
@@ -177,6 +176,10 @@ class DetailController {
           $scope.place = new Place(result[2].data);
           $scope.country = _.find($scope.countries, function(country) {
             return $scope.place.country_id === country.country_id;
+          });
+
+          ImageFactory.getImage($scope.place.photo_id).then(function(res) {
+            $scope.photo = res.data;
           });
         }
 

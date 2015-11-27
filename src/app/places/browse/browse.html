@@ -3,19 +3,20 @@
   <a class="btn close" ng-click="cancel()" type="button">X</a>
 </div>
 <div class="modal-body">
-  <input ng-model="text" type="text">
-  <button class="btn btn-primary" ng-click="search()">Search</button>
+  <form class="form-inline">
+    <div class="form-group">
+      <input class="form-control" ng-model="text" type="text">
+      <button class="btn btn-primary" type="submit" ng-click="search()">Search</button>
+    </div>
+</form>
   <div class="container-fluid">
     <h4 class="text-center" ng-hide="canShowPhotos">Searching...</h4>
     <div ng-repeat="row in photos">
       <div class="row">
         <div ng-repeat="photo in row">
           <div class="col-sm-4 col-xs-6 modal-cell">
-            <button class=" modal-btn" ng-click="select({{photo}})">
+            <button class="modal-btn" ng-click="select({{photo}})">
               <img class="center-block modal-image" ng-src="{{photo.url}}">
-              <p class="text-center modal-text">
-                {{photo.title | limitTo: 70}} {{photo.title.length > 70 ? "..." : ""}}
-              </p>
             </button>
           </div>
         </div>

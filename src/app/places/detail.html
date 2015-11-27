@@ -33,7 +33,7 @@
         </div>
 
         <div class="form-group">
-          <label for="input-continent">Continent</label>
+          <label for="input-country">Country</label>
           <div>
             <ol class="nya-bs-select form-control input-medium" disabled="isPreparing" live-search="true" ng-model="country" size="5">
               <li nya-bs-option="option in countries track by option.name">
@@ -113,7 +113,6 @@
             <div class="padded">
               <input id="maps-input" class="form-control" ng-disabled="isPreparing">
             </div>
-            <!-- TODO disable street view  -->
             <ng-map on-drag="dragMap(event)" center="{{mapCenter.latitude}}, {{mapCenter.longitude}}" map-initialized="prepareMap(map)" zoom="16" on-click="placeMarker(event)">
               <marker centered=false draggable="true" on-dragstart="startMoveMarker(event)" on-dragend="endMoveMarker(event)" on-drag="moveMarker(event)" position="{{place.latitude}}, {{place.longitude}}">
             </ng-map>
