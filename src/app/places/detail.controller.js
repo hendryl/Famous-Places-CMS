@@ -1,26 +1,37 @@
 var Place = require('./place');
+var latLngDecimals = 6;
+var defaultZoom = 16;
+var nullCountry = {
+  "name": "No country",
+  "country_id": null
+};
 
 class DetailController {
-  constructor($q, $scope, $location, $routeParams, toastr, _, PlaceFactory, CountryFactory, CharacteristicFactory, $uibModal) {
+  constructor($q, $scope, $location, $routeParams, toastr, _, PlaceFactory, CountryFactory, CharacteristicFactory, ImageFactory, $uibModal, NgMap, mapsKey) {
     'ngInject';
 
+    $scope.googleMapsURL = "https://maps.google.com/maps/api/js?libraries=places&callback=prepareMap&key=" + mapsKey;
     $scope.place = new Place();
     $scope.countries = [];
     $scope.characteristics = [];
     $scope.isPreparing = true;
     $scope.isNewPlace = _.endsWith($location.path(), 'create');
-
-    var hasBrowsed = false;
-
-    var nullCountry = {
-      "name": "No country",
-      "country_id": null
+    $scope.mapCenter = {
+      latitude: 0,
+      longitude: 0
     };
 
+    var hasChanged = false;
+
     var checkedCharacteristics = function() {
-      return _.filter($scope.characteristics, function(ch) {
+      var filterFunction = function(ch) {
         return ch.checked === true;
-      });
+      };
+
+      return _.chain($scope.characteristics)
+      .filter(filterFunction)
+      .map('characteristic_id')
+      .value();
     };
 
     var getPayload = function() {
@@ -30,7 +41,8 @@ class DetailController {
     };
 
     $scope.canSave = function() {
-      return $scope.form.$dirty || hasBrowsed;
+      return ($scope.form.$dirty || hasChanged) &&
+      !_.isEmpty($scope.place.name);
     };
 
     $scope.cancel = function() {
@@ -47,12 +59,12 @@ class DetailController {
 
     $scope.save = function() {
       var payload = getPayload();
-      // PlaceFactory.update($scope.id, payload).then(function(result) {
-      //   toastr.success('Place updated.');
-      //   $location.path('/places');
-      // }, function(error) {
-      //   toastr.error('Failed to update place: ' + error.data.detail);
-      // });
+      PlaceFactory.update($scope.id, payload).then(function(result) {
+        toastr.success('Place updated.');
+        $location.path('/places');
+      }, function(error) {
+        toastr.error('Failed to update place: ' + error.data.detail);
+      });
     };
 
     $scope.create = function() {
@@ -79,49 +91,114 @@ class DetailController {
       });
 
       modalInstance.result.then(function(photo) {
-        $scope.place.photo_id = photo.photo_id;
+        $scope.place.photo_id = photo.id;
         $scope.photo = photo;
-        hasBrowsed = true;
+        hasChanged = true;
       });
     };
 
-    var countryListPromise = CountryFactory.getList();
-    var characteristicListPromise = CharacteristicFactory.getList();
-    var placePromise = null;
-
-    if (!$scope.isNewPlace) {
-      $scope.id = Number($routeParams.id);
-      $scope.header = "Update Place";
-      placePromise = PlaceFactory.getDetail($scope.id);
-    } else {
-      $scope.id = 0;
-      $scope.header = "New Place";
-    }
-
-    $q.all([countryListPromise, characteristicListPromise, placePromise]).then(function(result) {
-      $scope.countries = _.sortBy(result[0].data, "name");
-      $scope.countries.unshift(nullCountry);
-
-      if (result[2] !== null) {
-        $scope.place = new Place(result[2].data);
-        $scope.country = _.find($scope.countries, function(country) {
-          return $scope.place.country_id === country.country_id;
-        });
+    var checkPlace = function(places) {
+      if (places === 0) {
+        return;
       }
 
-      var characteristics = _.sortBy(result[1].data, "name");
-      characteristics = _.each(characteristics, function(ch) {
-        if (_.includes($scope.place.tags, ch.characteristic_id)) {
-          ch.checked = true;
-        } else {
-          ch.checked = false;
-        }
+      var place = places[0];
+      if (!place.geometry) {
+        return;
+      }
+
+      $scope.moveToLocation(place);
+    };
+
+    $scope.prepareMap = function(map) {
+      $scope.map = map;
+
+      var options = {
+        streetViewControl: false
+      };
+
+      map.setOptions(options);
+
+      var input = window.document.getElementById('maps-input');
+      $scope.searchBox = new google.maps.places.SearchBox(input);
+
+      $scope.searchBox.addListener('places_changed', function() {
+        var places = $scope.searchBox.getPlaces();
+
+        checkPlace(places);
       });
+    };
 
-      $scope.characteristics = characteristics;
+    $scope.moveToLocation = function(place) {
+      if (place.geometry.viewport) {
+        $scope.map.fitBounds(place.geometry.viewport);
+      } else {
+        $scope.centerMap(place.geometry.location);
+        $scope.map.setZoom(defaultZoom);
+      }
+    };
 
-      $scope.isPreparing = false;
-    });
+    $scope.centerMap = function(latLng) {
+      $scope.map.panTo(latLng);
+    };
+
+    $scope.placeMarker = function(event) {
+      $scope.centerMap(event.latLng);
+      $scope.moveMarker(event);
+    };
+
+    $scope.moveMarker = function(event) {
+      $scope.place.latitude = event.latLng.lat().toFixed(latLngDecimals);
+      $scope.place.longitude = event.latLng.lng().toFixed(latLngDecimals);
+      hasChanged = true;
+    };
+
+    var prepareData = function() {
+      var countryListPromise = CountryFactory.getList();
+      var characteristicListPromise = CharacteristicFactory.getList();
+      var placePromise = null;
+
+      if (!$scope.isNewPlace) {
+        $scope.id = Number($routeParams.id);
+        $scope.header = "Update Place";
+        placePromise = PlaceFactory.getDetail($scope.id);
+      } else {
+        $scope.id = 0;
+        $scope.header = "New Place";
+      }
+
+      $q.all([countryListPromise, characteristicListPromise, placePromise]).then(function(result) {
+        $scope.countries = _.sortBy(result[0].data, "name");
+        $scope.countries.unshift(nullCountry);
+
+        if (result[2] !== null) {
+          $scope.place = new Place(result[2].data);
+          $scope.country = _.find($scope.countries, function(country) {
+            return $scope.place.country_id === country.country_id;
+          });
+
+          ImageFactory.getImage($scope.place.photo_id).then(function(res) {
+            $scope.photo = res.data;
+          });
+        }
+
+        var characteristics = _.sortBy(result[1].data, "name");
+        characteristics = _.each(characteristics, function(ch) {
+          if (_.includes($scope.place.tags, ch.characteristic_id)) {
+            ch.checked = true;
+          } else {
+            ch.checked = false;
+          }
+        });
+
+        $scope.characteristics = characteristics;
+        $scope.mapCenter.latitude = $scope.place.latitude;
+        $scope.mapCenter.longitude = $scope.place.longitude;
+        $scope.isPreparing = false;
+      });
+    };
+
+    prepareData();
   }
 }
 

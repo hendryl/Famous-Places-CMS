@@ -32,8 +32,7 @@
               {{place.country}}
             </td>
             <td class="text-center">
-              <img class="table-image" ng-src="{{place.image}}" alt="">
-              <span ng-hide="place.image != ''">No Image</span>
+              {{place.latitude | number: 4}}, {{place.longitude | number: 4}}
             </td>
             <td class="text-center">
               {{place.enabled ? "Yes" : "No"}}

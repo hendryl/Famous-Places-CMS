@@ -62,7 +62,7 @@ class DetailController {
     };
 
     $scope.canSave = function() {
-      return $scope.form.$dirty;
+      return $scope.form.$dirty && !_.isEmpty($scope.name);
     };
 
     $scope.cancel = function() {
