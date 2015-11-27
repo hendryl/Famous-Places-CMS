@@ -6,7 +6,7 @@ class ManageController {
       'ID',
       'Name',
       'Country',
-      'Image',
+      'Location',
       'Enabled',
       'Actions'
     ];

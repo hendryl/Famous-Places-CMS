@@ -40,7 +40,6 @@ class DetailController {
       return $scope.place;
     };
 
-    // TODO: default lat/long to 0 if empty
     $scope.canSave = function() {
       return ($scope.form.$dirty || hasChanged) &&
       !_.isEmpty($scope.place.name);
