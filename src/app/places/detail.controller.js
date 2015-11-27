@@ -24,9 +24,14 @@ class DetailController {
     var hasChanged = false;
 
     var checkedCharacteristics = function() {
-      return _.filter($scope.characteristics, function(ch) {
+      var filterFunction = function(ch) {
         return ch.checked === true;
-      });
+      }
+
+      return _.chain($scope.characteristics)
+      .filter(filterFunction)
+      .map('characteristic_id')
+      .value();
     };
 
     var getPayload = function() {
@@ -35,6 +40,8 @@ class DetailController {
       return $scope.place;
     };
 
+    // TODO: name must not be empty!
+    // TODO: default lat/long to 0 if empty
     $scope.canSave = function() {
       return $scope.form.$dirty || hasChanged;
     };
@@ -53,12 +60,12 @@ class DetailController {
 
     $scope.save = function() {
       var payload = getPayload();
-      // PlaceFactory.update($scope.id, payload).then(function(result) {
-      //   toastr.success('Place updated.');
-      //   $location.path('/places');
-      // }, function(error) {
-      //   toastr.error('Failed to update place: ' + error.data.detail);
-      // });
+      PlaceFactory.update($scope.id, payload).then(function(result) {
+        toastr.success('Place updated.');
+        $location.path('/places');
+      }, function(error) {
+        toastr.error('Failed to update place: ' + error.data.detail);
+      });
     };
 
     $scope.create = function() {
@@ -85,7 +92,7 @@ class DetailController {
       });
 
       modalInstance.result.then(function(photo) {
-        $scope.place.photo_id = photo.photo_id;
+        $scope.place.photo_id = photo.id;
         $scope.photo = photo;
         hasChanged = true;
       });
@@ -147,6 +154,7 @@ class DetailController {
       hasChanged = true;
     };
 
+    //TODO: Get data for image!
     var prepareData = function() {
       var countryListPromise = CountryFactory.getList();
       var characteristicListPromise = CharacteristicFactory.getList();
