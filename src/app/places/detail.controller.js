@@ -16,6 +16,10 @@ class DetailController {
     $scope.characteristics = [];
     $scope.isPreparing = true;
     $scope.isNewPlace = _.endsWith($location.path(), 'create');
+    $scope.mapCenter = {
+      latitude: 0,
+      longitude: 0
+    };
 
     var hasChanged = false;
 
@@ -172,6 +176,8 @@ class DetailController {
         });
 
         $scope.characteristics = characteristics;
+        $scope.mapCenter.latitude = $scope.place.latitude;
+        $scope.mapCenter.longitude = $scope.place.longitude;
         $scope.isPreparing = false;
       });
     };
