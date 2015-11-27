@@ -16,8 +16,9 @@ class Place {
       this.description = "";
       this.country_id = null;
       this.photo_id = null;
-      this.latitude = 0;
-      this.longitude = 0;
+      //Set default location to binus
+      this.latitude = -6.200235;
+      this.longitude = 106.785382;
       this.link = "";
       this.tags = [];
     }
