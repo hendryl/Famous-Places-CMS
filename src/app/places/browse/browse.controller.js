@@ -1,5 +1,7 @@
 class BrowseController {
   constructor($scope, $uibModalInstance, ImageFactory, text) {
+    'ngInject';
+
     var imageCount = 60;
 
     $scope.text = text;
