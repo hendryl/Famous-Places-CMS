@@ -6,17 +6,17 @@
           Famous Places CMS
         </h2>
       </div>
-        <div class="col-xs-4" id="logout">
-          <p class="text-inverted text-right">Logged in as {{user}}.<br>
-            <a href="#/login" class="nav-link">Log out.</a>
-          </p>
-        </div>
+      <div class="col-xs-4" id="logout">
+        <p class="text-inverted text-right">Logged in as
+          {{user}}.<br>
+          <a class="nav-link" href="#/login">Log out.</a>
+        </p>
+      </div>
     </div>
-    <div class="row"
     <div class="row">
       <div class="col-xs-12">
         <ul class="nav nav-pills">
-          <li ng-repeat="menu in menus" ng-class="{active: isActive('/{{menu.href}}')}">
+          <li ng-class="{active: isActive('/{{menu.href}}')}" ng-repeat="menu in menus">
             <a ng-href="#/{{menu.href}}">
               {{menu.title}}
             </a>
