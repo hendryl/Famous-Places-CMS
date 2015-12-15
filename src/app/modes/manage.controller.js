@@ -6,7 +6,8 @@ class ManageController {
       'ID',
       'Name',
       'Enabled',
-      'Image'
+      'Image',
+      'Actions'
     ];
     $scope.modes = [];
 
