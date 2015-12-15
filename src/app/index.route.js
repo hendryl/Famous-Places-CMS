@@ -11,6 +11,11 @@ function routerConfig($routeProvider) {
       templateUrl: 'app/main/main.html',
       controller: 'MainController'
     })
+    .when('/modes', {
+      title: 'Modes',
+      templateUrl: 'app/modes/manage.html',
+      controller: 'ModesController'
+    })
     .when('/continents', {
       title: 'Continents',
       templateUrl: 'app/continents/manage.html',
