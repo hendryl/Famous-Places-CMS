@@ -8,6 +8,7 @@ import CharacteristicFactory from './characteristics/characteristic.factory';
 import CountryFactory from './countries/country.factory';
 import PlaceFactory from './places/place.factory';
 import ImageFactory from './places/image.factory';
+import ModesFactory from './modes/modes.factory';
 
 import LoginController from './login/login.controller';
 import MainController from './main/main.controller';
@@ -43,6 +44,7 @@ angular.module('famousPlacesCms', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanit
   .factory('CountryFactory', ['$http', 'baseURLConfig', ($http, baseURLConfig) => new CountryFactory($http, baseURLConfig)])
   .factory('PlaceFactory', ['$http', 'baseURLConfig', ($http, baseURLConfig) => new PlaceFactory($http, baseURLConfig)])
   .factory('ImageFactory', ['$http', 'baseURLConfig', ($http, baseURLConfig) => new ImageFactory($http, baseURLConfig)])
+  .factory('ModesFactory', ['$http', 'baseURLConfig', ($http, baseURLConfig) => new ModesFactory($http, baseURLConfig)])
 
   .controller('LoginController', LoginController)
   .controller('MainController', MainController)
