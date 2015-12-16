@@ -27,6 +27,10 @@ class DetailController {
       $scope.isPlaying = false;
     };
 
+    $scope.isChecked = function(option) {
+      return option.checked;
+    };
+
     $scope.canSave = function() {
       return $scope.form.$dirty && !_.isEmpty($scope.mode.name);
     };

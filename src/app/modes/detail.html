@@ -38,18 +38,62 @@
         <div class="form-group">
           <label for="input-music">Music</label>
           <input class="form-control input-medium" id="input-music" name="name" ng-disabled="isPreparing" ng-model="mode.music" placeholder="Music URL" type="text">
-          <button class="btn btn-primary btn-spacing btn-vertical-spacing" ng-disabled="isPlaying" ng-click="playMusic()">Play</button>
-          <button class="btn btn-info btn-vertical-spacing" ng-disabled="!isPlaying" ng-click="stopMusic()">Stop</button>
+          <button class="btn btn-primary btn-spacing btn-vertical-spacing" ng-click="playMusic()" ng-disabled="isPlaying">Play</button>
+          <button class="btn btn-info btn-vertical-spacing" ng-click="stopMusic()" ng-disabled="!isPlaying">Stop</button>
         </div>
         <div class="form-group">
           <label for="input-image">Image</label>
           <input class="form-control input-medium" id="input-image" name="name" ng-disabled="isPreparing" ng-model="mode.image" placeholder="Image URL" type="text">
-          <img class="input-image" ng-src="{{image}}" alt="No image" />
+          <img alt="No image" class="input-image" ng-src="{{image}}"/>
         </div>
-        <button type="button" class="btn btn-info btn-spacing" ng-click="cancel()">Cancel</button>
-        <button type="button" class="btn btn-primary" ng-click="save()" ng-disabled="!canSave()" ng-hide="isNewCountry">Save changes</button>
-        <button type="button" class="btn btn-primary" ng-click="create()" ng-disabled="!canSave()" ng-show="isNewCountry">Create</button>
-      </form>
-    </div>
+
+        <h3>Filters</h3>
+        <p>OR rule, check more for more results. Uncheck all to disable filters.</p>
+        <div class="form-group">
+          <div>
+            <label for="input-countries">
+              Countries
+            </label>
+          </div>
+          <div class="checkbox-inline" ng-repeat="option in countries">
+            <span ng-class="{checked: isChecked(option)}">
+              <input ng-disabled="isPreparing" ng-model="option.checked" type="checkbox">
+              {{option.name}}
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div>
+            <label for="input-continents">
+              Continents
+            </label>
+          </div>
+          <div class="checkbox-inline" ng-repeat="option in continents">
+            <span ng-class="{checked: isChecked(option)}">
+              <input ng-disabled="isPreparing" ng-model="option.checked" type="checkbox">
+              {{option.name}}
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div>
+            <label for="input-characteristics">Characteristics</label>
+          </div>
+          <div class="checkbox-inline" ng-repeat="option in characteristics">
+            <span ng-class="{checked: isChecked(option)}">
+              <input ng-disabled="isPreparing" ng-model="option.checked" type="checkbox">
+              {{option.name}}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn btn-info btn-spacing" ng-click="cancel()" type="button">Cancel</button>
+      <button class="btn btn-primary" ng-click="save()" ng-disabled="!canSave()" ng-hide="isNewCountry" type="button">Save changes</button>
+      <button class="btn btn-primary" ng-click="create()" ng-disabled="!canSave()" ng-show="isNewCountry" type="button">Create</button>
+    </form>
   </div>
+</div>
 </div>
