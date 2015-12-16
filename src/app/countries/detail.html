@@ -33,9 +33,9 @@
           <input class="form-control input-medium" id="input-image" name="name" ng-disabled="isPreparing" ng-model="image" placeholder="Country flag URL" type="text">
           <img class="input-image" ng-src="{{image}}" alt="No image" />
         </div>
-        <button type="button" class="btn btn-info btn-spacing" ng-click="cancel()">Cancel</button>
-        <button type="button" class="btn btn-primary" ng-click="save()" ng-disabled="!canSave()" ng-hide="isNewCountry">Save changes</button>
-        <button type="button" class="btn btn-primary" ng-click="create()" ng-disabled="!canSave()" ng-show="isNewCountry">Create</button>
+        <button type="button" class="btn btn-info btn-spacing btn-bottom-margin" ng-click="cancel()">Cancel</button>
+        <button type="button" class="btn btn-primary btn-bottom-margin" ng-click="save()" ng-disabled="!canSave()" ng-hide="isNewCountry">Save changes</button>
+        <button type="button" class="btn btn-primary btn-bottom-margin" ng-click="create()" ng-disabled="!canSave()" ng-show="isNewCountry">Create</button>
       </form>
     </div>
   </div>

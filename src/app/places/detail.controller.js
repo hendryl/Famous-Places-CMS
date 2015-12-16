@@ -23,6 +23,11 @@ class DetailController {
 
     var hasChanged = false;
 
+
+    $scope.isChecked = function(option) {
+      return option.checked;
+    };
+
     var checkedCharacteristics = function() {
       var filterFunction = function(ch) {
         return ch.checked === true;
@@ -39,10 +44,6 @@ class DetailController {
       $scope.place.tags = checkedCharacteristics();
       return $scope.place;
     };
-
-    $scope.isChecked = function(option) {
-      return option.checked;
-    }
 
     $scope.canSave = function() {
       return ($scope.form.$dirty || hasChanged) &&
