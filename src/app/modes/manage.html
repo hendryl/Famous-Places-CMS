@@ -1,0 +1,57 @@
+<navbar></navbar>
+<div class="container">
+  <div class="row header-padding">
+    <div class="col-xs-8 col-md-8">
+      <span class="h2">Modes</span>
+    </div>
+    <div class="col-xs-4 col-md-4 text-right">
+      <a href="/#/modes/create">
+        <button class="btn btn-primary">Create new mode</button>
+      </a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <table align="center" class="table auto table-responsive table-striped table-bordered">
+        <thead>
+          <tr>
+            <th ng-repeat="header in headers" class="text-center">
+              <strong>{{header}}</strong>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="mode in modes">
+            <td class="text-center">
+              {{mode.mode_id}}
+            </td>
+            <td class="text-center">
+              {{mode.name}}
+            </td>
+            <td class="text-center">
+              {{mode.enabled}}
+            </td>
+            <td class="text-center">
+              <img class="table-image" ng-src="{{mode.image}}" alt="">
+              <span ng-hide="mode.image != ''">No Image</span>
+            </td>
+            <td class="text-center">
+              <a ng-href="/#/modes/{{mode.mode_id}}">
+                <button class="btn btn-info btn-spacing">Modify</button>
+              </a>
+              <button class="btn btn-danger" ng-click="delete(mode.mode_id, mode.name)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td class="text-right" colspan="{{headers.length}}">
+              <strong>{{modes.length}}
+                {{modes.length == 1 ? "mode" : "modes"}}</strong>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</div>

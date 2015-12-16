@@ -63,13 +63,21 @@
   margin-right: 4px;
 }
 
+.btn-vertical-spacing {
+  margin-top: 8px;
+}
+
+.btn-bottom-margin {
+  margin-bottom: 10px;
+}
+
 .btn-inline-margin {
   margin-left: 10px;
 }
 
 @media screen and (max-width : 561px) {
   .btn-inline-margin {
-    margin-top: 10px; 
+    margin-top: 10px;
     margin-left: 10px;
   }
 }
