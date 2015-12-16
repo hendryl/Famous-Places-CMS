@@ -60,10 +60,10 @@
             <label for="input-characteristics">Characteristics</label>
           </div>
           <div class="checkbox-inline" ng-repeat="option in characteristics">
-            <span ng-class="{checked: isChecked(option)}">
+            <label ng-class="{checked: !isChecked(option)}">
               <input ng-disabled="isPreparing" ng-model="option.checked" type="checkbox">
               {{option.name}}
-            </span>
+            </label>
           </div>
         </div>
       </div>

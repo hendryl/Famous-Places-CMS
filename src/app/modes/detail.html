@@ -56,10 +56,10 @@
             </label>
           </div>
           <div class="checkbox-inline" ng-repeat="option in countries">
-            <span ng-class="{checked: isChecked(option)}">
+            <label ng-class="{checked: !isChecked(option)}">
               <input ng-disabled="isPreparing" ng-model="option.checked" type="checkbox">
               {{option.name}}
-            </span>
+            </label>
           </div>
         </div>
 
@@ -70,10 +70,10 @@
             </label>
           </div>
           <div class="checkbox-inline" ng-repeat="option in continents">
-            <span ng-class="{checked: isChecked(option)}">
+            <label ng-class="{checked: !isChecked(option)}">
               <input ng-disabled="isPreparing" ng-model="option.checked" type="checkbox">
               {{option.name}}
-            </span>
+            </label>
           </div>
         </div>
 
@@ -82,17 +82,17 @@
             <label for="input-characteristics">Characteristics</label>
           </div>
           <div class="checkbox-inline" ng-repeat="option in characteristics">
-            <span ng-class="{checked: isChecked(option)}">
+            <label ng-class="{checked: !isChecked(option)}">
               <input ng-disabled="isPreparing" ng-model="option.checked" type="checkbox">
               {{option.name}}
-            </span>
+            </label>
           </div>
         </div>
       </div>
 
       <button class="btn btn-info btn-spacing btn-bottom-margin" ng-click="cancel()" type="button">Cancel</button>
-      <button class="btn btn-primary btn-bottom-margin" ng-click="save()" ng-disabled="!canSave()" ng-hide="isNewCountry" type="button">Save changes</button>
-      <button class="btn btn-primary btn-bottom-margin" ng-click="create()" ng-disabled="!canSave()" ng-show="isNewCountry" type="button">Create</button>
+      <button class="btn btn-primary btn-bottom-margin" ng-click="save()" ng-disabled="!canSave()" ng-hide="isNewMode" type="button">Save changes</button>
+      <button class="btn btn-primary btn-bottom-margin" ng-click="create()" ng-disabled="!canSave()" ng-show="isNewMode" type="button">Create</button>
     </form>
   </div>
 </div>

@@ -56,10 +56,6 @@ class DetailController {
       return option.checked;
     };
 
-    $scope.canSave = function() {
-      return $scope.form.$dirty && !_.isEmpty($scope.mode.name);
-    };
-
     $scope.cancel = function() {
       var result = true;
 
@@ -79,14 +75,27 @@ class DetailController {
       return $scope.mode;
     };
 
+    $scope.canSave = function() {
+      return $scope.form.$dirty && !_.isEmpty($scope.mode.name);
+    };
+
     $scope.save = function() {
       var payload = getPayload();
-      console.log(payload);
       ModeFactory.update($scope.mode.mode_id, payload).then(function(result) {
         toastr.success('Mode updated.');
         $location.path('/modes');
       }, function(error) {
         toastr.error('Failed to update mode: ' + error.data.detail);
+      });
+    };
+
+    $scope.create = function() {
+      var payload = getPayload();
+      ModeFactory.create(payload).then(function(result) {
+        toastr.success('Mode created.');
+        $location.path('/modes');
+      }, function(error) {
+        toastr.error('Failed to create mode: ' + error.data.detail);
       });
     };
 
