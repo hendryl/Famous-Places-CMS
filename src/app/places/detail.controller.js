@@ -40,6 +40,10 @@ class DetailController {
       return $scope.place;
     };
 
+    $scope.isChecked = function(option) {
+      return option.checked;
+    }
+
     $scope.canSave = function() {
       return ($scope.form.$dirty || hasChanged) &&
       !_.isEmpty($scope.place.name);
