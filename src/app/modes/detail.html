@@ -16,6 +16,36 @@
           <label for="input-name">Mode name</label>
           <input class="form-control input-medium" id="input-name" name="name" ng-disabled="isPreparing" ng-model="mode.name" placeholder="Mode name" type="text">
         </div>
+        <div class="form-group">
+          <label for="input-description">Description</label>
+          <textarea class="form-control input-medium" id="input-description" ng-disabled="isPreparing" ng-model="mode.description" placeholder="Mode description" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+          <div>
+            <label>Enabled</label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              <input ng-disabled="isPreparing" ng-model="mode.enabled" ng-value="true" type="radio">Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              <input ng-disabled="isPreparing" ng-model="mode.enabled" ng-value="false" type="radio">No
+            </label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="input-music">Music</label>
+          <input class="form-control input-medium" id="input-music" name="name" ng-disabled="isPreparing" ng-model="mode.music" placeholder="Music URL" type="text">
+          <button class="btn btn-primary btn-spacing btn-vertical-spacing" ng-disabled="isPlaying" ng-click="playMusic()">Play</button>
+          <button class="btn btn-info btn-vertical-spacing" ng-disabled="!isPlaying" ng-click="stopMusic()">Stop</button>
+        </div>
+        <div class="form-group">
+          <label for="input-image">Image</label>
+          <input class="form-control input-medium" id="input-image" name="name" ng-disabled="isPreparing" ng-model="mode.image" placeholder="Image URL" type="text">
+          <img class="input-image" ng-src="{{image}}" alt="No image" />
+        </div>
         <button type="button" class="btn btn-info btn-spacing" ng-click="cancel()">Cancel</button>
         <button type="button" class="btn btn-primary" ng-click="save()" ng-disabled="!canSave()" ng-hide="isNewCountry">Save changes</button>
         <button type="button" class="btn btn-primary" ng-click="create()" ng-disabled="!canSave()" ng-show="isNewCountry">Create</button>

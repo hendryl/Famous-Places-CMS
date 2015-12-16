@@ -29,7 +29,7 @@ import NavbarDirective from './components/navbar/navbar.directive';
 
 var lodash = require('lodash');
 
-angular.module('famousPlacesCms', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngResource', 'ngRoute', 'ui.bootstrap', 'nya.bootstrap.select', 'ngMap'])
+angular.module('famousPlacesCms', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngResource', 'ngRoute', 'ui.bootstrap', 'nya.bootstrap.select', 'ngMap', 'ngAudio'])
   .constant('moment', moment)
   .constant('toastr', toastr)
   .constant('_', lodash)

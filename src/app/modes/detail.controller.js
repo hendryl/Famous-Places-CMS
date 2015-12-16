@@ -1,5 +1,5 @@
 class DetailController {
-  constructor($q, $scope, $location, $routeParams, toastr, _, CountryFactory, ContinentFactory, CharacteristicFactory, ModeFactory) {
+  constructor($q, $scope, $location, $routeParams, toastr, _, ngAudio, CountryFactory, ContinentFactory, CharacteristicFactory, ModeFactory) {
     'ngInject';
 
     $scope.mode = {
@@ -10,6 +10,21 @@ class DetailController {
       music: '',
       enabled: true,
       isPreparing: true,
+    };
+
+    $scope.isPlaying = false;
+    $scope.loadedMusic = null;
+
+    $scope.playMusic = function() {
+      $scope.loadedMusic = ngAudio.load($scope.mode.music);
+      console.log($scope.loadedMusic);
+      $scope.loadedMusic.play();
+      $scope.isPlaying = true;
+    };
+
+    $scope.stopMusic = function() {
+      $scope.loadedMusic.stop();
+      $scope.isPlaying = false;
     };
 
     var prepareData = function() {
