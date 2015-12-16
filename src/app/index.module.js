@@ -8,7 +8,7 @@ import CharacteristicFactory from './characteristics/characteristic.factory';
 import CountryFactory from './countries/country.factory';
 import PlaceFactory from './places/place.factory';
 import ImageFactory from './places/image.factory';
-import ModesFactory from './modes/modes.factory';
+import ModeFactory from './modes/mode.factory';
 
 import LoginController from './login/login.controller';
 import MainController from './main/main.controller';
@@ -22,6 +22,7 @@ import PlaceDetailController from './places/detail.controller';
 import CountryDetailController from './countries/detail.controller';
 import ContinentDetailController from './continents/detail.controller';
 import CharacteristicDetailController from './characteristics/detail.controller';
+import ModeDetailController from './modes/detail.controller';
 import BrowseController from './places/browse/browse.controller';
 
 import NavbarDirective from './components/navbar/navbar.directive';
@@ -46,7 +47,7 @@ angular.module('famousPlacesCms', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanit
   .factory('CountryFactory', ['$http', 'baseURLConfig', ($http, baseURLConfig) => new CountryFactory($http, baseURLConfig)])
   .factory('PlaceFactory', ['$http', 'baseURLConfig', ($http, baseURLConfig) => new PlaceFactory($http, baseURLConfig)])
   .factory('ImageFactory', ['$http', 'baseURLConfig', ($http, baseURLConfig) => new ImageFactory($http, baseURLConfig)])
-  .factory('ModesFactory', ['$http', 'baseURLConfig', ($http, baseURLConfig) => new ModesFactory($http, baseURLConfig)])
+  .factory('ModeFactory', ['$http', 'baseURLConfig', ($http, baseURLConfig) => new ModeFactory($http, baseURLConfig)])
 
   .controller('LoginController', LoginController)
   .controller('MainController', MainController)
@@ -54,11 +55,14 @@ angular.module('famousPlacesCms', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanit
   .controller('CountriesController', CountriesController)
   .controller('ContinentsController', ContinentsController)
   .controller('CharacteristicsController', CharacteristicsController)
+  .controller('ModesController', ModesController)
+
   .controller('PlaceDetailController', PlaceDetailController)
   .controller('CountryDetailController', CountryDetailController)
   .controller('ContinentDetailController', ContinentDetailController)
   .controller('CharacteristicDetailController', CharacteristicDetailController)
-  .controller('ModesController', ModesController)
+  .controller('ModeDetailController', ModeDetailController)
+
   .controller('BrowseController', BrowseController)
 
   .directive('navbar', () => new NavbarDirective());

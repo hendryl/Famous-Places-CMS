@@ -1,5 +1,5 @@
 class ManageController {
-  constructor($scope, toastr, _, ModesFactory) {
+  constructor($scope, toastr, _, ModeFactory) {
     'ngInject';
 
     $scope.headers = [
@@ -15,7 +15,7 @@ class ManageController {
       var result = confirm("Are you sure you want to delete mode " + name + "?");
 
       if(result) {
-        ModesFactory.delete(id).then(function(data) {
+        ModeFactory.delete(id).then(function(data) {
           $scope.modes = _.remove($scope.modes, function(mode) {
             return mode.mode_id !== id;
           });
@@ -27,7 +27,7 @@ class ManageController {
       }
     };
 
-    ModesFactory.getList().success(function(data) {
+    ModeFactory.getList().success(function(data) {
       $scope.modes = _.sortBy(data, 'mode_id');
 
       _.each($scope.modes, function(mode) {

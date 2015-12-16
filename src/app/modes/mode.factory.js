@@ -1,4 +1,4 @@
-class ModesFactory {
+class ModeFactory {
   constructor($http, baseURLConfig) {
     'ngInject';
 
@@ -24,4 +24,4 @@ class ModesFactory {
   }
 }
 
-export default ModesFactory;
+export default ModeFactory;
