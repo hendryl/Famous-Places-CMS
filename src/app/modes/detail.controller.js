@@ -27,6 +27,31 @@ class DetailController {
       $scope.isPlaying = false;
     };
 
+    var filterFunction = function(ch) {
+      return ch.checked === true;
+    };
+
+    var checkedCountries = function() {
+      return _.chain($scope.countries)
+      .filter(filterFunction)
+      .map('country_id')
+      .value();
+    };
+
+    var checkedContinents = function() {
+      return _.chain($scope.continents)
+      .filter(filterFunction)
+      .map('continent_id')
+      .value();
+    };
+
+    var checkedCharacteristics = function() {
+      return _.chain($scope.characteristics)
+      .filter(filterFunction)
+      .map('characteristic_id')
+      .value();
+    };
+
     $scope.isChecked = function(option) {
       return option.checked;
     };
@@ -45,6 +70,24 @@ class DetailController {
       if (result) {
         $location.path('/modes');
       }
+    };
+
+    var getPayload = function() {
+      $scope.mode.countries = checkedCountries();
+      $scope.mode.continents = checkedContinents();
+      $scope.mode.characteristics = checkedCharacteristics();
+      return $scope.mode;
+    };
+
+    $scope.save = function() {
+      var payload = getPayload();
+      console.log(payload);
+      ModeFactory.update($scope.mode.mode_id, payload).then(function(result) {
+        toastr.success('Mode updated.');
+        $location.path('/modes');
+      }, function(error) {
+        toastr.error('Failed to update mode: ' + error.data.detail);
+      });
     };
 
     var prepareData = function() {
