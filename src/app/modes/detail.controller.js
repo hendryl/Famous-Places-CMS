@@ -27,6 +27,22 @@ class DetailController {
       $scope.isPlaying = false;
     };
 
+    $scope.canSave = function() {
+      return $scope.form.$dirty && !_.isEmpty($scope.mode.name);
+    };
+
+    $scope.cancel = function() {
+      var result = true;
+
+      if ($scope.canSave()) {
+        result = confirm('Are you sure? Your changes will be discarded!');
+      }
+
+      if (result) {
+        $location.path('/modes');
+      }
+    };
+
     var prepareData = function() {
       var modePromise = null;
       var countriesPromise = CountryFactory.getList();
