@@ -184,11 +184,7 @@ class DetailController {
 
         var characteristics = _.sortBy(result[1].data, "name");
         characteristics = _.each(characteristics, function(ch) {
-          if (_.includes($scope.place.tags, ch.characteristic_id)) {
-            ch.checked = true;
-          } else {
-            ch.checked = false;
-          }
+          ch.checked = _.includes($scope.place.tags, ch.characteristic_id);
         });
 
         $scope.characteristics = characteristics;
