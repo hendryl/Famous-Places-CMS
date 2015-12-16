@@ -16,6 +16,11 @@ function routerConfig($routeProvider) {
       templateUrl: 'app/modes/manage.html',
       controller: 'ModesController'
     })
+    .when('/modes/:id', {
+      title: 'Update Mode',
+      templateUrl: 'app/modes/detail.html',
+      controller: 'ModeDetailController'
+    })
     .when('/continents', {
       title: 'Continents',
       templateUrl: 'app/continents/manage.html',
