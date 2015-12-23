@@ -20,7 +20,7 @@ class MainController {
 
     ModeFactory.getList().success(function(data) {
       $scope.modes = data.length;
-    })
+    });
   }
 }
 

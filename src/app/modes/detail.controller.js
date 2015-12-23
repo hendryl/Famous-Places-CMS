@@ -17,7 +17,6 @@ class DetailController {
 
     $scope.playMusic = function() {
       $scope.loadedMusic = ngAudio.load($scope.mode.music);
-      console.log($scope.loadedMusic);
       $scope.loadedMusic.play();
       $scope.isPlaying = true;
     };
@@ -143,7 +142,7 @@ class DetailController {
         }
 
         $scope.isPreparing = false;
-      })
+      });
     };
 
     prepareData();
