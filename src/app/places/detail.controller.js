@@ -16,6 +16,7 @@ class DetailController {
     $scope.characteristics = [];
     $scope.isPreparing = true;
     $scope.isNewPlace = _.endsWith($location.path(), 'create');
+    $scope.isSaving = false;
     $scope.mapCenter = {
       latitude: 0,
       longitude: 0
@@ -47,7 +48,7 @@ class DetailController {
 
     $scope.canSave = function() {
       return ($scope.form.$dirty || hasChanged) &&
-      !_.isEmpty($scope.place.name);
+      !_.isEmpty($scope.place.name) && !$scope.isSaving;
     };
 
     $scope.cancel = function() {
@@ -63,21 +64,27 @@ class DetailController {
     };
 
     $scope.save = function() {
+      $scope.isSaving = true;
       var payload = getPayload();
       PlaceFactory.update($scope.id, payload).then(function(result) {
+        $scope.isSaving = false;
         toastr.success('Place updated.');
         $location.path('/places');
       }, function(error) {
+          $scope.isSaving = false;
         toastr.error('Failed to update place: ' + error.data.detail);
       });
     };
 
     $scope.create = function() {
+      $scope.isSaving = true;
       var payload = getPayload();
       PlaceFactory.create(payload).then(function(result) {
+        $scope.isSaving = false;
         toastr.success('Place created.');
         $location.path('/places');
       }, function(error) {
+        $scope.isSaving = false;
         toastr.error('Failed to create place: ' + error.data.detail);
       });
     };

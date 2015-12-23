@@ -8,6 +8,7 @@ class DetailController {
     $scope.continents = [];
 
     $scope.isPreparing = true;
+    $scope.isSaving = false;
     $scope.isNewCountry = _.endsWith($location.path(), 'create');
 
     var continentListPromise = ContinentFactory.getList();
@@ -23,17 +24,17 @@ class DetailController {
 
     if (countryPromise === null) {
       continentListPromise.then(function(result) {
-          $scope.continents = _.sortBy(result.data, "name");
-          $scope.isPreparing = false;
-          $scope.continent = 1;
-        });
+        $scope.continents = _.sortBy(result.data, "name");
+        $scope.isPreparing = false;
+        $scope.continent = 1;
+      });
     } else {
       $q.all([continentListPromise, countryPromise]).then(function(result) {
         $scope.continents = _.sortBy(result[0].data, "name");
 
         var data = result[1].data;
         $scope.id = data.country_id;
-        $scope.name= data.name;
+        $scope.name = data.name;
         $scope.image = data.image;
 
         $scope.continent = _.find($scope.continents, function(continent) {
@@ -53,7 +54,10 @@ class DetailController {
     };
 
     $scope.canSave = function() {
-      return $scope.form.$dirty && !_.isEmpty($scope.name) && !_.isNull($scope.continent);
+      return $scope.form.$dirty &&
+        !_.isEmpty($scope.name) &&
+        !_.isNull($scope.continent) &&
+        !$scope.isSaving;
     };
 
     $scope.cancel = function() {
@@ -69,21 +73,27 @@ class DetailController {
     };
 
     $scope.save = function() {
+      $scope.isSaving = true;
       var payload = getPayload();
       CountryFactory.update($scope.id, payload).then(function(result) {
+        $scope.isSaving = false;
         toastr.success('Country updated.');
         $location.path('/countries');
       }, function(error) {
+        $scope.isSaving = false;
         toastr.error('Failed to update country: ' + error.data.detail);
       });
     };
 
     $scope.create = function() {
+      $scope.isSaving = true;
       var payload = getPayload();
       CountryFactory.create(payload).then(function(result) {
+        $scope.isSaving = false;
         toastr.success('country created.');
         $location.path('/countries');
       }, function(error) {
+        $scope.isSaving = false;
         toastr.error('Failed to create country: ' + error.data.detail);
       });
     };

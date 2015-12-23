@@ -12,6 +12,7 @@ class DetailController {
       isPreparing: true,
     };
 
+    $scope.isSaving = false;
     $scope.isPlaying = false;
     $scope.loadedMusic = null;
 
@@ -75,25 +76,31 @@ class DetailController {
     };
 
     $scope.canSave = function() {
-      return $scope.form.$dirty && !_.isEmpty($scope.mode.name);
+      return $scope.form.$dirty && !_.isEmpty($scope.mode.name) && !$scope.isSaving;
     };
 
     $scope.save = function() {
+      $scope.isSaving = true;
       var payload = getPayload();
       ModeFactory.update($scope.mode.mode_id, payload).then(function(result) {
+        $scope.isSaving = false;
         toastr.success('Mode updated.');
         $location.path('/modes');
       }, function(error) {
+        $scope.isSaving = false;
         toastr.error('Failed to update mode: ' + error.data.detail);
       });
     };
 
     $scope.create = function() {
+      $scope.isSaving = true;
       var payload = getPayload();
       ModeFactory.create(payload).then(function(result) {
+        $scope.isSaving = false;
         toastr.success('Mode created.');
         $location.path('/modes');
       }, function(error) {
+        $scope.isSaving = false;
         toastr.error('Failed to create mode: ' + error.data.detail);
       });
     };
