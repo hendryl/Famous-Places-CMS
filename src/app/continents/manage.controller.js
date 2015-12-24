@@ -3,11 +3,28 @@ class ManageController {
     'ngInject';
 
     $scope.headers = [
-      'ID',
-      'Name',
-      'Actions'
+      {
+        'title':'ID',
+        'column':'continent_id'
+      },
+      {
+        'title':'Name',
+        'column':'name'
+      },
+      {
+        'title':'Actions',
+        'column':''
+      },
     ];
     $scope.continents = [];
+
+    $scope.sort = function(column) {
+      if(column.isEmpty) {
+        return;
+      }
+
+      $scope.continents = _.sortBy($scope.continents, column);
+    };
 
     $scope.delete = function(id, name) {
       var result = confirm("Are you sure you want to delete continent " + name + "?");

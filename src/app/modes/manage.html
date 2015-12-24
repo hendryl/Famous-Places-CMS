@@ -16,7 +16,7 @@
         <thead>
           <tr>
             <th ng-repeat="header in headers" class="text-center">
-              <strong>{{header}}</strong>
+              <button class="btn-no-style" ng-click="sort(header.column)"><strong >{{header.title}}</strong></button>
             </th>
           </tr>
         </thead>
