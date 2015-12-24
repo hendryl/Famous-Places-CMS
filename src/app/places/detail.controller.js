@@ -24,7 +24,6 @@ class DetailController {
 
     var hasChanged = false;
 
-
     $scope.isChecked = function(option) {
       return option.checked;
     };

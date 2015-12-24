@@ -3,6 +3,12 @@
   border: none;
 }
 
+.btn-no-style {
+  border: none;
+  outline: none;
+  background: none;
+}
+
 .btn:focus,
 .btn:active:focus,
 .btn.active:focus {
