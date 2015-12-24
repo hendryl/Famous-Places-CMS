@@ -88,6 +88,10 @@ class DetailController {
       });
     };
 
+    var transformPhotoUrl = function(url) {
+      return url.replace('q.jpg', 'b.jpg');
+    };
+
     $scope.browseImage = function() {
       var modalInstance = $uibModal.open({
         animation: true,
@@ -102,8 +106,11 @@ class DetailController {
       });
 
       modalInstance.result.then(function(photo) {
+        photo.url = transformPhotoUrl(photo.url);
+
         $scope.place.photo_id = photo.id;
         $scope.photo = photo;
+
         hasChanged = true;
       });
     };
