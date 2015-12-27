@@ -40,6 +40,10 @@ class DetailController {
     };
 
     var getPayload = function() {
+      if($scope.country == null) {
+        $scope.country = nullCountry;
+      }
+
       $scope.place.country_id = $scope.country.country_id;
       $scope.place.tags = checkedCharacteristics();
       return $scope.place;
@@ -195,9 +199,11 @@ class DetailController {
             return $scope.place.country_id === country.country_id;
           });
 
-          ImageFactory.getImage($scope.place.photo_id).then(function(res) {
-            $scope.photo = res.data;
-          });
+          if($scope.place.photo_id != null) {
+            ImageFactory.getImage($scope.place.photo_id).then(function(res) {
+              $scope.photo = res.data;
+            });
+          }
         }
 
         var characteristics = _.sortBy(result[1].data, "name");
