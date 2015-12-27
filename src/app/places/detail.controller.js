@@ -40,6 +40,10 @@ class DetailController {
     };
 
     var getPayload = function() {
+      if($scope.country == null) {
+        $scope.country = nullCountry;
+      }
+
       $scope.place.country_id = $scope.country.country_id;
       $scope.place.tags = checkedCharacteristics();
       return $scope.place;
