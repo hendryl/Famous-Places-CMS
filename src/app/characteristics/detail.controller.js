@@ -5,6 +5,7 @@ class DetailController {
     $scope.id = 0;
     $scope.name = "";
     $scope.isPreparing = true;
+    $scope.isSaving = false;
     $scope.isNewCharacteristic = _.endsWith($location.path(), 'create');
 
     if (!$scope.isNewCharacteristic) {
@@ -28,7 +29,7 @@ class DetailController {
     };
 
     $scope.canSave = function() {
-      return $scope.form.$dirty && !_.isEmpty($scope.name);
+      return $scope.form.$dirty && !_.isEmpty($scope.name) && !$scope.isSaving;
     };
 
     $scope.cancel = function() {
@@ -44,21 +45,27 @@ class DetailController {
     };
 
     $scope.save = function() {
+      $scope.isSaving = true;
       var payload = getPayload();
       CharacteristicFactory.update($scope.id, payload).then(function(result) {
+        $scope.isSaving = false;
         toastr.success('Characteristic updated.');
         $location.path('/characteristics');
       }, function(error) {
+        $scope.isSaving = false;
         toastr.error('Failed to update characteristic: ' + error.data.detail);
       });
     };
 
     $scope.create = function() {
+      $scope.isSaving = true;
       var payload = getPayload();
       CharacteristicFactory.create(payload).then(function(result) {
+        $scope.isSaving = false;
         toastr.success('Characteristic created.');
         $location.path('/characteristics');
       }, function(error) {
+        $scope.isSaving = false;
         toastr.error('Failed to create characteristic: ' + error.data.detail);
       });
     };

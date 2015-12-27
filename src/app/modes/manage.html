@@ -2,11 +2,11 @@
 <div class="container">
   <div class="row header-padding">
     <div class="col-xs-8 col-md-8">
-      <span class="h2">Characteristics</span>
+      <span class="h2">Modes</span>
     </div>
     <div class="col-xs-4 col-md-4 text-right">
-      <a href="/#/characteristics/create">
-        <button class="btn btn-primary">Create new characteristic</button>
+      <a href="/#/modes/create">
+        <button class="btn btn-primary">Create new mode</button>
       </a>
     </div>
   </div>
@@ -21,26 +21,33 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="row in characteristics">
+          <tr ng-repeat="mode in modes">
             <td class="text-center">
-              {{row.characteristic_id}}
+              {{mode.mode_id}}
             </td>
             <td class="text-center">
-              {{row.name}}
+              {{mode.name}}
             </td>
             <td class="text-center">
-              <a ng-href="/#/characteristics/{{row.characteristic_id}}">
+              {{mode.enabled}}
+            </td>
+            <td class="text-center">
+              <img class="table-image" ng-src="{{mode.image}}" alt="">
+              <span ng-hide="mode.image != ''">No Image</span>
+            </td>
+            <td class="text-center">
+              <a ng-href="/#/modes/{{mode.mode_id}}">
                 <button class="btn btn-info btn-spacing">Modify</button>
               </a>
-              <button class="btn btn-danger" ng-click="delete(row.characteristic_id, row.name)">Delete</button>
+              <button class="btn btn-danger" ng-click="delete(mode.mode_id, mode.name)">Delete</button>
             </td>
           </tr>
         </tbody>
         <tfoot>
           <tr>
             <td class="text-right" colspan="{{headers.length}}">
-              <strong>{{characteristics.length}}
-                characteristic{{characteristics.length == 1 ? "" : "s"}}</strong>
+              <strong>{{modes.length}}
+                {{modes.length == 1 ? "mode" : "modes"}}</strong>
             </td>
           </tr>
         </tfoot>

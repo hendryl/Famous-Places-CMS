@@ -17,7 +17,8 @@
     "toastr": "~2.1.1",
     "lodash": "~3.10.1",
     "nya-bootstrap-select": "~2.1.2",
-    "ngmap": "~1.14.15"
+    "ngmap": "~1.14.15",
+    "angular-audio": "~1.7.1"
   },
   "devDependencies": {
     "angular-mocks": "~1.4.0"

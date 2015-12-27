@@ -16,12 +16,17 @@ class DetailController {
     $scope.characteristics = [];
     $scope.isPreparing = true;
     $scope.isNewPlace = _.endsWith($location.path(), 'create');
+    $scope.isSaving = false;
     $scope.mapCenter = {
       latitude: 0,
       longitude: 0
     };
 
     var hasChanged = false;
+
+    $scope.isChecked = function(option) {
+      return option.checked;
+    };
 
     var checkedCharacteristics = function() {
       var filterFunction = function(ch) {
@@ -42,7 +47,7 @@ class DetailController {
 
     $scope.canSave = function() {
       return ($scope.form.$dirty || hasChanged) &&
-      !_.isEmpty($scope.place.name);
+      !_.isEmpty($scope.place.name) && !$scope.isSaving;
     };
 
     $scope.cancel = function() {
@@ -58,23 +63,33 @@ class DetailController {
     };
 
     $scope.save = function() {
+      $scope.isSaving = true;
       var payload = getPayload();
       PlaceFactory.update($scope.id, payload).then(function(result) {
+        $scope.isSaving = false;
         toastr.success('Place updated.');
         $location.path('/places');
       }, function(error) {
+          $scope.isSaving = false;
         toastr.error('Failed to update place: ' + error.data.detail);
       });
     };
 
     $scope.create = function() {
+      $scope.isSaving = true;
       var payload = getPayload();
       PlaceFactory.create(payload).then(function(result) {
+        $scope.isSaving = false;
         toastr.success('Place created.');
         $location.path('/places');
       }, function(error) {
+        $scope.isSaving = false;
         toastr.error('Failed to create place: ' + error.data.detail);
       });
+    };
+
+    var transformPhotoUrl = function(url) {
+      return url.replace('q.jpg', 'b.jpg');
     };
 
     $scope.browseImage = function() {
@@ -91,8 +106,11 @@ class DetailController {
       });
 
       modalInstance.result.then(function(photo) {
+        photo.url = transformPhotoUrl(photo.url);
+
         $scope.place.photo_id = photo.id;
         $scope.photo = photo;
+
         hasChanged = true;
       });
     };
@@ -184,11 +202,7 @@ class DetailController {
 
         var characteristics = _.sortBy(result[1].data, "name");
         characteristics = _.each(characteristics, function(ch) {
-          if (_.includes($scope.place.tags, ch.characteristic_id)) {
-            ch.checked = true;
-          } else {
-            ch.checked = false;
-          }
+          ch.checked = _.includes($scope.place.tags, ch.characteristic_id);
         });
 
         $scope.characteristics = characteristics;

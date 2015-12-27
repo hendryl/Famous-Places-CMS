@@ -3,11 +3,29 @@ class ManageController {
     'ngInject';
 
     $scope.headers = [
-      'ID',
-      'Name',
-      'Actions'
+      {
+        'title':'ID',
+        'column':'characteristic_id'
+      },
+      {
+        'title':'Name',
+        'column':'name'
+      },
+      {
+        'title':'Actions',
+        'column':''
+      },
     ];
+
     $scope.characteristics = [];
+
+    $scope.sort = function(column) {
+      if(column.isEmpty) {
+        return;
+      }
+
+      $scope.characteristics = _.sortBy($scope.characteristics, column);
+    };
 
     $scope.delete = function(id, name) {
       var result = confirm("Are you sure you want to delete characteristic " + name + "?");

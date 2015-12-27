@@ -1,5 +1,5 @@
 class MainController {
-  constructor ($scope, PlaceFactory, CountryFactory, CharacteristicFactory, ContinentFactory) {
+  constructor ($scope, PlaceFactory, CountryFactory, CharacteristicFactory, ContinentFactory, ModeFactory) {
     'ngInject';
 
     PlaceFactory.getList().success(function(data) {
@@ -16,6 +16,10 @@ class MainController {
 
     CharacteristicFactory.getList().success(function(data) {
       $scope.characteristics = data.length;
+    });
+
+    ModeFactory.getList().success(function(data) {
+      $scope.modes = data.length;
     });
   }
 }

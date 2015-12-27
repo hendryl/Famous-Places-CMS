@@ -8,7 +8,7 @@ class ImageFactory {
     };
 
     this.getImage = function(id) {
-      return $http.get(baseURLConfig.rootAPI + '/flickr/photos/' + id + '?type=cms');
+      return $http.get(baseURLConfig.rootAPI + '/flickr/photos/' + id + '?type=cms&sizing=b');
     };
   }
 }

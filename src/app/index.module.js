@@ -8,6 +8,7 @@ import CharacteristicFactory from './characteristics/characteristic.factory';
 import CountryFactory from './countries/country.factory';
 import PlaceFactory from './places/place.factory';
 import ImageFactory from './places/image.factory';
+import ModeFactory from './modes/mode.factory';
 
 import LoginController from './login/login.controller';
 import MainController from './main/main.controller';
@@ -15,17 +16,20 @@ import PlacesController from './places/manage.controller';
 import CountriesController from './countries/manage.controller';
 import ContinentsController from './continents/manage.controller';
 import CharacteristicsController from './characteristics/manage.controller';
+import ModesController from './modes/manage.controller';
+
 import PlaceDetailController from './places/detail.controller';
 import CountryDetailController from './countries/detail.controller';
 import ContinentDetailController from './continents/detail.controller';
 import CharacteristicDetailController from './characteristics/detail.controller';
+import ModeDetailController from './modes/detail.controller';
 import BrowseController from './places/browse/browse.controller';
 
 import NavbarDirective from './components/navbar/navbar.directive';
 
 var lodash = require('lodash');
 
-angular.module('famousPlacesCms', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngResource', 'ngRoute', 'ui.bootstrap', 'nya.bootstrap.select', 'ngMap'])
+angular.module('famousPlacesCms', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngResource', 'ngRoute', 'ui.bootstrap', 'nya.bootstrap.select', 'ngMap', 'ngAudio'])
   .constant('moment', moment)
   .constant('toastr', toastr)
   .constant('_', lodash)
@@ -43,6 +47,7 @@ angular.module('famousPlacesCms', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanit
   .factory('CountryFactory', ['$http', 'baseURLConfig', ($http, baseURLConfig) => new CountryFactory($http, baseURLConfig)])
   .factory('PlaceFactory', ['$http', 'baseURLConfig', ($http, baseURLConfig) => new PlaceFactory($http, baseURLConfig)])
   .factory('ImageFactory', ['$http', 'baseURLConfig', ($http, baseURLConfig) => new ImageFactory($http, baseURLConfig)])
+  .factory('ModeFactory', ['$http', 'baseURLConfig', ($http, baseURLConfig) => new ModeFactory($http, baseURLConfig)])
 
   .controller('LoginController', LoginController)
   .controller('MainController', MainController)
@@ -50,10 +55,14 @@ angular.module('famousPlacesCms', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanit
   .controller('CountriesController', CountriesController)
   .controller('ContinentsController', ContinentsController)
   .controller('CharacteristicsController', CharacteristicsController)
+  .controller('ModesController', ModesController)
+
   .controller('PlaceDetailController', PlaceDetailController)
   .controller('CountryDetailController', CountryDetailController)
   .controller('ContinentDetailController', ContinentDetailController)
   .controller('CharacteristicDetailController', CharacteristicDetailController)
+  .controller('ModeDetailController', ModeDetailController)
+
   .controller('BrowseController', BrowseController)
 
   .directive('navbar', () => new NavbarDirective());

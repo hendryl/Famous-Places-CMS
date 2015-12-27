@@ -25,6 +25,10 @@ class NavbarController {
         href: "home"
       },
       {
+        title: "Modes",
+        href: "modes"
+      },
+      {
         title: "Places",
         href: "places"
       },
