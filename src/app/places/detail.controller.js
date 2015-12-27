@@ -199,9 +199,11 @@ class DetailController {
             return $scope.place.country_id === country.country_id;
           });
 
-          ImageFactory.getImage($scope.place.photo_id).then(function(res) {
-            $scope.photo = res.data;
-          });
+          if($scope.place.photo_id != null) {
+            ImageFactory.getImage($scope.place.photo_id).then(function(res) {
+              $scope.photo = res.data;
+            });
+          }
         }
 
         var characteristics = _.sortBy(result[1].data, "name");
