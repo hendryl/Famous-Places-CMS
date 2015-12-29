@@ -20,6 +20,10 @@ class ManageController {
         column:'latitude'
       },
       {
+        title:'Has image',
+        column: 'hasImage'
+      },
+      {
         title:'Enabled',
         column:'enabled'
       },
@@ -58,8 +62,10 @@ class ManageController {
     PlaceFactory.getList().success(function(data) {
       data = _.sortBy(data, "place_id");
       data = _.each(data, function(place) {
-        place.continent = place.continent === null ? "-" : place.continent;
-        place.image = place.image === null || place.image === undefined ? "" : place.image;
+
+        place.hasImage = place.photo_id == null
+        ? false
+        : true;
       });
       $scope.places = data;
     });

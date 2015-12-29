@@ -34,6 +34,8 @@
             <td class="text-center">
               {{place.latitude | number: 2}}, {{place.longitude | number: 2}}
             </td>
+            <td class="text-center">
+              {{place.hasImage ? "Yes" : "No"}}
             </td>
             <td class="text-center">
               {{place.enabled ? "Yes" : "No"}}
