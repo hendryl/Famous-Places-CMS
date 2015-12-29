@@ -63,9 +63,7 @@ class ManageController {
       data = _.sortBy(data, "place_id");
       data = _.each(data, function(place) {
 
-        place.hasImage = place.photo_id == null
-        ? false
-        : true;
+        place.hasImage = place.photo_id == null ? false : true;
       });
       $scope.places = data;
     });
