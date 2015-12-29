@@ -6,7 +6,9 @@
     </div>
     <div class="col-xs-4 col-md-4 text-right">
       <a href="/#/countries/create">
-        <button class="btn btn-primary">Create new country</button>
+        <button class="btn btn-primary">
+          <i class="material-icons">add</i>
+        </button>
       </a>
     </div>
   </div>
@@ -15,8 +17,10 @@
       <table align="center" class="table auto table-responsive table-striped table-bordered">
         <thead>
           <tr>
-            <th ng-repeat="header in headers" class="text-center">
-              <button class="btn-no-style" ng-click="sort(header.column)"><strong >{{header.title}}</strong></button>
+            <th class="text-center" ng-repeat="header in headers">
+              <button class="btn-no-style" ng-click="sort(header.column)">
+                <strong >{{header.title}}</strong>
+              </button>
             </th>
           </tr>
         </thead>
@@ -32,14 +36,16 @@
               {{country.continent}}
             </td>
             <td class="text-center">
-              <img class="table-image" ng-src="{{country.image}}" alt="">
+              <img alt="" class="table-image" ng-src="{{country.image}}">
               <span ng-hide="country.image != ''">No Image</span>
             </td>
             <td class="text-center">
               <a ng-href="/#/countries/{{country.country_id}}">
-                <button class="btn btn-info btn-spacing">Modify</button>
+                <button class="btn btn-info btn-spacing"><i class="material-icons">edit</i></button>
               </a>
-              <button class="btn btn-danger" ng-click="delete(country.country_id, country.name)">Delete</button>
+              <button class="btn btn-danger" ng-click="delete(country.country_id, country.name)">
+                <i class="material-icons">delete</i>
+              </button>
             </td>
           </tr>
         </tbody>
