@@ -1,5 +1,5 @@
 <navbar></navbar>
-<div class="container">
+<div class="container-fluid">
   <div class="row header-padding">
     <div class="col-xs-8 col-md-8">
       <span class="h2">Places</span>
@@ -32,7 +32,7 @@
               {{place.country}}
             </td>
             <td class="text-center">
-              {{place.latitude | number: 2}}, {{place.longitude | number: 2}}
+              {{place.description | limitTo: 30}}{{place.description.length > 30 ? '...' : ''}}
             </td>
             <td class="text-center">
               {{place.hasImage ? "Yes" : "No"}}
@@ -40,7 +40,7 @@
             <td class="text-center">
               {{place.enabled ? "Yes" : "No"}}
             </td>
-            <td class="text-center">
+            <td class="text-center action-box">
               <a ng-href="/#/places/{{place.place_id}}">
                 <button class="btn btn-info btn-spacing">Modify</button>
               </a>

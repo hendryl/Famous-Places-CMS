@@ -16,11 +16,11 @@ class ManageController {
         column:'country'
       },
       {
-        title:'Location',
-        column:'latitude'
+        title:'Description',
+        column:'description'
       },
       {
-        title:'Has image',
+        title:'Image',
         column: 'hasImage'
       },
       {
