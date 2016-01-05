@@ -23,8 +23,10 @@ class DetailController {
     };
 
     $scope.stopMusic = function() {
-      $scope.loadedMusic.stop();
-      $scope.isPlaying = false;
+      if($scope.isPlaying) {
+        $scope.loadedMusic.stop();
+        $scope.isPlaying = false;
+      }
     };
 
     var filterFunction = function(ch) {
@@ -64,6 +66,7 @@ class DetailController {
       }
 
       if (result) {
+        $scope.stopMusic();
         $location.path('/modes');
       }
     };
@@ -84,6 +87,7 @@ class DetailController {
       var payload = getPayload();
       ModeFactory.update($scope.mode.mode_id, payload).then(function(result) {
         $scope.isSaving = false;
+        $scope.stopMusic();
         toastr.success('Mode updated.');
         $location.path('/modes');
       }, function(error) {
